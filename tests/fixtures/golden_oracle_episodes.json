@@ -1,0 +1,187 @@
+{
+  "doors_open": true,
+  "environment_id": "BabyAI-GoToObjMazeS4-v0",
+  "episodes": [
+    {
+      "actions_digest": "39a4efcbf9ccfef69c472f2dc653e5b9993226abdb7385fba727f9d8624a1683",
+      "mission": "go to the grey key",
+      "oracle_calls": 20,
+      "scenario_hash": "02dc73100aa21a1cdd46da8238514dbd537108878aeb3be0f40c7c7695492040",
+      "seed": 200,
+      "success": true,
+      "transitions": 20
+    },
+    {
+      "actions_digest": "cf759a94d9a418dc87944a7e9d3c10d35c93f50fca39d1ed8c43fb56946f9eb7",
+      "mission": "go to the yellow ball",
+      "oracle_calls": 11,
+      "scenario_hash": "205c9af81588a3f1849ed8878a25da9f27545dd10f1af4c063742c5a9aacb8c4",
+      "seed": 201,
+      "success": true,
+      "transitions": 11
+    },
+    {
+      "actions_digest": "d994c8845941124b90e898e13d62eff8dad045d7f7287cedee21d1ccf8f4341c",
+      "mission": "go to the red box",
+      "oracle_calls": 12,
+      "scenario_hash": "a5b3eb3696ebfb93ec1016e8f5686feb5dd1a7a36eacc334b963ca404a35b741",
+      "seed": 202,
+      "success": true,
+      "transitions": 12
+    },
+    {
+      "actions_digest": "2a8d1483c38f7858ff894bb4cd84e52c5172498c40aa9119d0d0cc4eebe7b6c3",
+      "mission": "go to the red box",
+      "oracle_calls": 17,
+      "scenario_hash": "ee15be538e77a07cf7b455bdae3b8a6c890e0df181a7e2d550bc5a0197f8f71d",
+      "seed": 203,
+      "success": true,
+      "transitions": 17
+    },
+    {
+      "actions_digest": "fdb6ff4b908af90677cbd8b1bdde360517992ee8d24aa08f64fbaa7e967366ac",
+      "mission": "go to the green box",
+      "oracle_calls": 24,
+      "scenario_hash": "bc49219c5f302cba3087d2091f3c7044129b803ae13a255deadcd6f0fcaad45a",
+      "seed": 204,
+      "success": true,
+      "transitions": 24
+    },
+    {
+      "actions_digest": "18855e44eb562ce336aa02435f28180f31a792040dfae471e1fba4a9de1619e5",
+      "mission": "go to the red ball",
+      "oracle_calls": 15,
+      "scenario_hash": "d0c94141f98776fbda467828636e5744aa2b99881fb726ed38f0c158c5c4dbe2",
+      "seed": 205,
+      "success": true,
+      "transitions": 15
+    },
+    {
+      "actions_digest": "25be7f4401a88b78d6e8a8472fb87d390768009a7516f6057b32de1b94ad0b31",
+      "mission": "go to the red box",
+      "oracle_calls": 12,
+      "scenario_hash": "7eb4c83a601a6699edb07ff560aace3a7b2007381c1efdb66d984924d032533b",
+      "seed": 206,
+      "success": true,
+      "transitions": 12
+    },
+    {
+      "actions_digest": "be7dc9af5636b282d44c2310331b230bfcec9035509fb2cbb0918f3a305f89e2",
+      "mission": "go to the blue key",
+      "oracle_calls": 15,
+      "scenario_hash": "7bd5eb213a7ce9c712fb210852cc84e5e7cb8cd22201084ae3c9410dbed19ac8",
+      "seed": 207,
+      "success": true,
+      "transitions": 15
+    },
+    {
+      "actions_digest": "c52109daa9fbb7d49a25e28d33a0bd5573393dad345f65d12712002bec0688a3",
+      "mission": "go to the grey ball",
+      "oracle_calls": 5,
+      "scenario_hash": "2c9bb3d50e4ee87c881ef2f7375c962863ac4a7e177856ce94872c6feeec7732",
+      "seed": 208,
+      "success": true,
+      "transitions": 5
+    },
+    {
+      "actions_digest": "85d4d125686f194fb09a87564a46d2b6adcf1c3bf6a6cae73859f0f669c39153",
+      "mission": "go to the red box",
+      "oracle_calls": 4,
+      "scenario_hash": "d523f43204d018921e2852b6c1cbd29d88df9031e14fa8f15c210a179576b841",
+      "seed": 209,
+      "success": true,
+      "transitions": 4
+    },
+    {
+      "actions_digest": "c38c9136328b5a76aa5616ecacb4a25b1264d7fcb87f81b6fc9ca0c41fbc23d6",
+      "mission": "go to the grey box",
+      "oracle_calls": 11,
+      "scenario_hash": "c74b4886ccf442a728c0667211cc69f43a443320c712c655d63d1ac772f65b19",
+      "seed": 210,
+      "success": true,
+      "transitions": 11
+    },
+    {
+      "actions_digest": "64bb45a25be834f3be32c33de6bbeadf1c0da36c34edc3129e84ac97ea6d90cd",
+      "mission": "go to the green ball",
+      "oracle_calls": 15,
+      "scenario_hash": "df83c91b7abff471407f306fa029fc232478d6a8ee15b7f6aaee7ca72d891591",
+      "seed": 211,
+      "success": true,
+      "transitions": 15
+    },
+    {
+      "actions_digest": "6ce37ec3f699b7afa3ad6d52f2c4e9ef5128edfaffad2cfde7ae548324fb2073",
+      "mission": "go to the red ball",
+      "oracle_calls": 8,
+      "scenario_hash": "ef89eed982c69d88e4137418d93f6fe6714f4608cdb01c6d33b6b770a97621a7",
+      "seed": 212,
+      "success": true,
+      "transitions": 8
+    },
+    {
+      "actions_digest": "03644f13acbc881b5cac44537093067b88ddecce5108f36d450eafac5229c7ea",
+      "mission": "go to the blue ball",
+      "oracle_calls": 12,
+      "scenario_hash": "235057c984d57aa40827fcd91f89f6555ef9c39bf4427eddd95e11bc6e47a492",
+      "seed": 213,
+      "success": true,
+      "transitions": 12
+    },
+    {
+      "actions_digest": "dbbc7025e89eb9b1ec9e8e2c7a2db6869dbb50fba21bf374c86529dc311cede9",
+      "mission": "go to the yellow key",
+      "oracle_calls": 3,
+      "scenario_hash": "e46951fa6e0701f48d3e65c60dd618ac3aadcc38159151e4e65231780765f886",
+      "seed": 214,
+      "success": true,
+      "transitions": 3
+    },
+    {
+      "actions_digest": "d8c39a809db9f40b0220a53ced3b1ab0eeca178595d0c7a0f136adf45ee58ad5",
+      "mission": "go to the green key",
+      "oracle_calls": 33,
+      "scenario_hash": "0772fe78e7a8429979e62917901eab32bd7e024388d6042de048b9faa1326c13",
+      "seed": 215,
+      "success": true,
+      "transitions": 33
+    },
+    {
+      "actions_digest": "d589a7d56ff21bbc46d1db39ddee56a559892bb79be6877c2ab4bb9b207e2fd6",
+      "mission": "go to the purple box",
+      "oracle_calls": 24,
+      "scenario_hash": "f94a0c0db0f7dfbe2eb46391720ca702fec366990f909a6f61a61ee68bcb163e",
+      "seed": 216,
+      "success": true,
+      "transitions": 24
+    },
+    {
+      "actions_digest": "d81891f254c1bdc7926dffde8a0c09c8cc844735370c15247ed0b42c00dad5a4",
+      "mission": "go to the grey key",
+      "oracle_calls": 13,
+      "scenario_hash": "2fbf04c987c07c346a09f27993ecdb5499021755fd77edfe0d96d646e6c360b3",
+      "seed": 217,
+      "success": true,
+      "transitions": 13
+    },
+    {
+      "actions_digest": "ba79701cda15e76dd867abd0dd596d0fbfb44aac06e9ec341d88d788a66427c6",
+      "mission": "go to the red ball",
+      "oracle_calls": 19,
+      "scenario_hash": "bec73a909f4b211799fd1ab353279a5bdabde4e36fab42a88ae2f6d72d35d446",
+      "seed": 218,
+      "success": true,
+      "transitions": 19
+    },
+    {
+      "actions_digest": "6ba1d2bd14c3117bd4c0e9d4dad83e7136a3a59bbdf125e698082253cf40298c",
+      "mission": "go to the blue box",
+      "oracle_calls": 10,
+      "scenario_hash": "b222844bae1cb4737910dad7ae7504e2c8da68c51186e5df3834e24821feda3a",
+      "seed": 219,
+      "success": true,
+      "transitions": 10
+    }
+  ],
+  "minigrid_version": "3.1.0"
+}

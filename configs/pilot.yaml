@@ -1,0 +1,106 @@
+# Pilot configuration for Recovery Policy Learning / Grounded Recovery.
+#
+# This is the only mutable configuration file. Values marked PILOT_TO_FREEZE
+# are deliberately undecided and must be resolved from validation evidence
+# before `gr freeze` copies the contract to configs/experiment_contract.yaml.
+
+study:
+  protocol_version: "0.1.0"
+  status: "PILOT"
+  primary_contrast: "recovery_aggregation_minus_extra_demonstrations"
+  primary_endpoint: "eligible_unseen_one_corruption_itt_success"
+  sesoi_absolute_success: 0.05
+
+environment:
+  env_id: "BabyAI-GoToObjMazeS4-v0"
+  # With closed doors the scripted oracle must emit `toggle` to open them,
+  # which would force a four-action policy set and state-dependent corruption
+  # semantics. `doors_open` is the environment's own parameter for the open
+  # variant and keeps the oracle movement-only; it is part of the contract.
+  doors_open: true
+  # Frozen policy action set. With open doors the scripted oracle emits only
+  # these three actions on GoTo missions; enlarging this set is a protocol
+  # change.
+  action_names: ["left", "right", "forward"]
+  action_ids: [0, 1, 2]
+  bot_import: "minigrid.utils.baby_ai_bot:BabyAIBot"
+  max_steps: 144
+  oracle_recovery_gate: 0.99
+
+data:
+  # Frozen from validation-pilot evidence (see data/pilot_reports/gpu_v1):
+  # base competence non-saturated at N0=4000; B/N0 = 25% marginal budget.
+  n0: 4000
+  b: 1000
+  k: 4
+  h: 8
+  dataset_schema_version: "1"
+  split_counts:
+    base: 800
+    collection: 800
+    validation: 300
+    operator_preflight: 600
+    test_candidate: 800
+    difficulty_shift: 200
+    expert_diagnostic: 200
+    visualization: 40
+
+perturbation:
+  # On a three-action set exactly two derangements exist (the two 3-cycles).
+  # The assignment of the two cycles to families is arbitrary and fixed here.
+  collection_operator:
+    name: "rot_plus"
+    mapping: [1, 2, 0]
+  unseen_operator:
+    name: "rot_minus"
+    mapping: [2, 0, 1]
+  # Disjoint time sets; the unseen slice additionally uses the other operator.
+  collection_time_set: [2, 4, 6, 8]
+  unseen_time_set: [3, 5, 7]
+  preflight_episodes_per_family: 600
+  preflight_time_min: 1
+  preflight_time_max: 8
+
+model:
+  # Symbolic observation channel vocabulary sizes (MiniGrid encoding).
+  num_objects: 11
+  num_colors: 6
+  num_states: 4
+  tile_embedding: 16
+  direction_embedding: 8
+  action_embedding: 8
+  conv_channels: 32
+  observation_projection: 64
+  word_embedding: 32
+  language_gru: 64
+  fusion: 128
+  policy_gru: 128
+
+training:
+  learning_rate: 1.0e-3
+  weight_decay: 1.0e-4
+  gradient_clip_norm: 1.0
+  base_updates: 3000
+  base_targets_per_update: 64
+  new_targets_per_update: 16
+  updates_per_round: 500
+  max_context_prefix: 32
+  max_sequence_length: 33
+  sampling_with_replacement: true
+  optimizer_state_policy: "continue"
+  # All model computation runs on this device; the CPU drives the environment,
+  # oracle, and bookkeeping. Device is part of the contract because it changes
+  # floating-point numerics; run-to-run determinism is revalidated per device.
+  device: "cuda"
+
+evaluation:
+  # Pilot across-bundle sd of the unseen paired delta was 0.020, so R=6
+  # projects a ~0.021 half-width against the 0.05 target (hard minimum 5).
+  desired_interval_half_width: 0.05
+  r_target: 6
+  r_max: 8
+  bootstrap_replicates: 2000
+
+seeds:
+  root_seed: 20260826
+  bundle_ids: ["B00", "B01", "B02", "B03", "B04", "B05"]

@@ -1,0 +1,13 @@
+{
+  "contract_hash": "dc62ec7aeb66e8b7c7d0f5fd41d75ede77a6cd780a540b3dcb86c4a5ee7bdeb3",
+  "entry_count": 600,
+  "manifest_hash": "92127001817333044c845947c682cc5e2ee37f4c33100d699437f2b8a3f1e788",
+  "manifest_version": 1,
+  "rejected_by_reason": {
+    "too_short_for_preflight_schedule": 2
+  },
+  "rejected_candidates": 2,
+  "scenario_hash_version": 1,
+  "scenario_identity_hash": "318acf2c3d0819825f57052439d718f4ad324382c3d5fab48301efaed154059a",
+  "split_name": "operator_preflight"
+}

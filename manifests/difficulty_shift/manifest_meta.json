@@ -1,0 +1,11 @@
+{
+  "contract_hash": "dc62ec7aeb66e8b7c7d0f5fd41d75ede77a6cd780a540b3dcb86c4a5ee7bdeb3",
+  "entry_count": 200,
+  "manifest_hash": "b8fc1c302cd3c01d75c0ebfa3f195358e88a17e453f8cedb0efba3b8055b4588",
+  "manifest_version": 1,
+  "rejected_by_reason": {},
+  "rejected_candidates": 0,
+  "scenario_hash_version": 1,
+  "scenario_identity_hash": "318acf2c3d0819825f57052439d718f4ad324382c3d5fab48301efaed154059a",
+  "split_name": "difficulty_shift"
+}

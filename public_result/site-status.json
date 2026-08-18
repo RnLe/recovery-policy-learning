@@ -1,0 +1,11 @@
+{
+  "canonical_report": "reports/Recovery_Policy_Learning_Technical_Report.pdf",
+  "code_commit": null,
+  "code_hash": "a081d9e31437145ccc78931e70ee55d39bf2a6c022837d909fc0f7cbbba101a8",
+  "generated_at": "2026-08-30T14:18:54Z",
+  "phase": "results",
+  "protocol_hash": "e777efe2d8f83c39ca31e7744162586833debc035eaf3970daaa04f10905ee0d",
+  "protocol_version": "0.1.0",
+  "result_release": true,
+  "schema_version": "1.0.0"
+}

@@ -1,0 +1,5 @@
+first_arm,second_arm,slice,bundles,mean,lower,upper,status
+recovery_aggregation,extra_demonstrations,clean,6,0.057836,0.036676,0.078996,secondary_not_prespecified
+recovery_aggregation,extra_demonstrations,matched,6,0.131841,0.0923,0.171382,secondary_not_prespecified
+extra_demonstrations,bc_base,unseen,6,0.044776,-0.006698,0.096251,secondary_not_prespecified
+recovery_aggregation,bc_base,unseen,6,0.187811,0.111271,0.264351,secondary_not_prespecified

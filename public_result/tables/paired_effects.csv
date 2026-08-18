@@ -1,0 +1,7 @@
+bundle,slice,recovery_rate,extra_demo_rate,paired_difference
+B00,unseen,0.865672,0.720149,0.145522
+B01,unseen,0.833955,0.69403,0.139925
+B02,unseen,0.822761,0.671642,0.151119
+B03,unseen,0.867537,0.761194,0.106343
+B04,unseen,0.83209,0.617537,0.214552
+B05,unseen,0.850746,0.75,0.100746

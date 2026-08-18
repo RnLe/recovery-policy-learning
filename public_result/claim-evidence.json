@@ -1,0 +1,34 @@
+{
+  "claims": [
+    {
+      "claim_id": "primary_unseen_itt",
+      "code_hash": "a081d9e31437145ccc78931e70ee55d39bf2a6c022837d909fc0f7cbbba101a8",
+      "contract_hash": "e777efe2d8f83c39ca31e7744162586833debc035eaf3970daaa04f10905ee0d",
+      "eligible_hash": "183a3726fad6cbbbfab8ed62abd8c134a814d9668a3efd367901ad936194cdcc",
+      "figure": "figures/primary_paired_effect.png",
+      "metric": "eligible_unseen_one_corruption_itt_success",
+      "status": "results",
+      "table": "tables/paired_effects.csv"
+    },
+    {
+      "claim_id": "exploratory_reserved_panels",
+      "code_hash": "a081d9e31437145ccc78931e70ee55d39bf2a6c022837d909fc0f7cbbba101a8",
+      "contract_hash": "e777efe2d8f83c39ca31e7744162586833debc035eaf3970daaa04f10905ee0d",
+      "eligible_hash": null,
+      "figure": "exploratory/figures/two_corruption.png",
+      "metric": "expert agreement and two-corruption stress panels",
+      "status": "exploratory_opened_after_the_confirmatory_result",
+      "table": "exploratory/tables/two_corruption.csv"
+    },
+    {
+      "claim_id": "secondary_descriptive_audits",
+      "code_hash": "a081d9e31437145ccc78931e70ee55d39bf2a6c022837d909fc0f7cbbba101a8",
+      "contract_hash": "e777efe2d8f83c39ca31e7744162586833debc035eaf3970daaa04f10905ee0d",
+      "eligible_hash": "183a3726fad6cbbbfab8ed62abd8c134a814d9668a3efd367901ad936194cdcc",
+      "figure": "figures/secondary_contrasts.png",
+      "metric": "descriptive audits over the same opening",
+      "status": "secondary_not_prespecified",
+      "table": "tables/secondary_contrasts.csv"
+    }
+  ]
+}

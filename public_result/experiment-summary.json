@@ -1,0 +1,899 @@
+{
+  "budget": {
+    "additional_revealed_targets": {
+      "extra_demo": 1000,
+      "recovery": 1000
+    },
+    "optimizer_updates_matched": true,
+    "replay_rules_matched": true,
+    "target_exposures_matched": true
+  },
+  "descriptive_audits": {
+    "budget_exposure": {
+      "bundles_audited": 6,
+      "exposures_equal_across_arms": true,
+      "logged": {
+        "extra_demonstrations": {
+          "discarded_recommendations": 0,
+          "episodes": 462,
+          "oracle_calls": 6000,
+          "simulator_steps": 6000
+        },
+        "recovery_aggregation": {
+          "discarded_recommendations": 32109,
+          "episodes": 1130,
+          "oracle_calls": 38109,
+          "simulator_steps": 38109
+        }
+      },
+      "matched": {
+        "extra_demonstrations": {
+          "base": 768000,
+          "new": 192000,
+          "updates": 12000
+        },
+        "recovery_aggregation": {
+          "base": 768000,
+          "new": 192000,
+          "updates": 12000
+        }
+      }
+    },
+    "corruption_time_profile": {
+      "bc_base|matched": {
+        "2": [
+          559,
+          792
+        ],
+        "4": [
+          506,
+          792
+        ],
+        "6": [
+          476,
+          744
+        ],
+        "8": [
+          609,
+          888
+        ]
+      },
+      "bc_base|unseen": {
+        "3": [
+          747,
+          1164
+        ],
+        "5": [
+          747,
+          1140
+        ],
+        "7": [
+          621,
+          912
+        ]
+      },
+      "extra_demonstrations|matched": {
+        "2": [
+          591,
+          792
+        ],
+        "4": [
+          560,
+          792
+        ],
+        "6": [
+          521,
+          744
+        ],
+        "8": [
+          660,
+          888
+        ]
+      },
+      "extra_demonstrations|unseen": {
+        "3": [
+          786,
+          1164
+        ],
+        "5": [
+          814,
+          1140
+        ],
+        "7": [
+          659,
+          912
+        ]
+      },
+      "recovery_aggregation|matched": {
+        "2": [
+          673,
+          792
+        ],
+        "4": [
+          681,
+          792
+        ],
+        "6": [
+          643,
+          744
+        ],
+        "8": [
+          759,
+          888
+        ]
+      },
+      "recovery_aggregation|unseen": {
+        "3": [
+          988,
+          1164
+        ],
+        "5": [
+          947,
+          1140
+        ],
+        "7": [
+          784,
+          912
+        ]
+      }
+    },
+    "delivery": {
+      "bc_base|matched": {
+        "assigned": 3216,
+        "delivered": 3142
+      },
+      "bc_base|unseen": {
+        "assigned": 3216,
+        "delivered": 3210
+      },
+      "extra_demonstrations|matched": {
+        "assigned": 3216,
+        "delivered": 3138
+      },
+      "extra_demonstrations|unseen": {
+        "assigned": 3216,
+        "delivered": 3212
+      },
+      "recovery_aggregation|matched": {
+        "assigned": 3216,
+        "delivered": 3140
+      },
+      "recovery_aggregation|unseen": {
+        "assigned": 3216,
+        "delivered": 3210
+      }
+    },
+    "failure_composition": {
+      "bc_base|clean": {
+        "step_limit_truncation": 763,
+        "success": 2453,
+        "terminated_without_goal": 0
+      },
+      "bc_base|matched": {
+        "step_limit_truncation": 1066,
+        "success": 2150,
+        "terminated_without_goal": 0
+      },
+      "bc_base|unseen": {
+        "step_limit_truncation": 1101,
+        "success": 2115,
+        "terminated_without_goal": 0
+      },
+      "extra_demonstrations|clean": {
+        "step_limit_truncation": 634,
+        "success": 2582,
+        "terminated_without_goal": 0
+      },
+      "extra_demonstrations|matched": {
+        "step_limit_truncation": 884,
+        "success": 2332,
+        "terminated_without_goal": 0
+      },
+      "extra_demonstrations|unseen": {
+        "step_limit_truncation": 957,
+        "success": 2259,
+        "terminated_without_goal": 0
+      },
+      "recovery_aggregation|clean": {
+        "step_limit_truncation": 448,
+        "success": 2768,
+        "terminated_without_goal": 0
+      },
+      "recovery_aggregation|matched": {
+        "step_limit_truncation": 460,
+        "success": 2756,
+        "terminated_without_goal": 0
+      },
+      "recovery_aggregation|unseen": {
+        "step_limit_truncation": 497,
+        "success": 2719,
+        "terminated_without_goal": 0
+      }
+    },
+    "overhead": {
+      "bc_base|clean": {
+        "assigned": 3216,
+        "mean_ratio": 1.185170387730484,
+        "median_ratio": 1.0,
+        "successes": 2453
+      },
+      "bc_base|matched": {
+        "assigned": 3216,
+        "mean_ratio": 1.4317898368858215,
+        "median_ratio": 1.2,
+        "successes": 2150
+      },
+      "bc_base|unseen": {
+        "assigned": 3216,
+        "mean_ratio": 1.522572806096477,
+        "median_ratio": 1.2608695652173914,
+        "successes": 2115
+      },
+      "extra_demonstrations|clean": {
+        "assigned": 3216,
+        "mean_ratio": 1.157296349477862,
+        "median_ratio": 1.0,
+        "successes": 2582
+      },
+      "extra_demonstrations|matched": {
+        "assigned": 3216,
+        "mean_ratio": 1.4400289094414924,
+        "median_ratio": 1.2,
+        "successes": 2332
+      },
+      "extra_demonstrations|unseen": {
+        "assigned": 3216,
+        "mean_ratio": 1.5288175990136639,
+        "median_ratio": 1.25,
+        "successes": 2259
+      },
+      "recovery_aggregation|clean": {
+        "assigned": 3216,
+        "mean_ratio": 1.238717602225803,
+        "median_ratio": 1.0,
+        "successes": 2768
+      },
+      "recovery_aggregation|matched": {
+        "assigned": 3216,
+        "mean_ratio": 1.4458647099581954,
+        "median_ratio": 1.2222222222222223,
+        "successes": 2756
+      },
+      "recovery_aggregation|unseen": {
+        "assigned": 3216,
+        "mean_ratio": 1.5826107148079924,
+        "median_ratio": 1.3243243243243243,
+        "successes": 2719
+      }
+    },
+    "secondary_contrasts": [
+      {
+        "bundles": 6,
+        "first_arm": "recovery_aggregation",
+        "level": 0.95,
+        "lower": 0.036675977902624377,
+        "mean": 0.057835820895522395,
+        "method": "paired_t",
+        "per_bundle_deltas": {
+          "B00": 0.04664179104477606,
+          "B01": 0.057835820895522416,
+          "B02": 0.06343283582089554,
+          "B03": 0.052238805970149294,
+          "B04": 0.09328358208955223,
+          "B05": 0.03358208955223885
+        },
+        "second_arm": "extra_demonstrations",
+        "slice": "clean",
+        "status": "secondary_not_prespecified",
+        "upper": 0.07899566388842041
+      },
+      {
+        "bundles": 6,
+        "first_arm": "recovery_aggregation",
+        "level": 0.95,
+        "lower": 0.0922995704257096,
+        "mean": 0.13184079601990048,
+        "method": "paired_t",
+        "per_bundle_deltas": {
+          "B00": 0.1548507462686568,
+          "B01": 0.17164179104477606,
+          "B02": 0.10820895522388063,
+          "B03": 0.11194029850746268,
+          "B04": 0.16604477611940294,
+          "B05": 0.07835820895522383
+        },
+        "second_arm": "extra_demonstrations",
+        "slice": "matched",
+        "status": "secondary_not_prespecified",
+        "upper": 0.17138202161409136
+      },
+      {
+        "bundles": 6,
+        "first_arm": "extra_demonstrations",
+        "level": 0.95,
+        "lower": -0.006698469189931264,
+        "mean": 0.04477611940298509,
+        "method": "paired_t",
+        "per_bundle_deltas": {
+          "B00": 0.08395522388059706,
+          "B01": 0.06529850746268662,
+          "B02": 0.07089552238805974,
+          "B03": 0.06156716417910446,
+          "B04": 0.03731343283582089,
+          "B05": -0.050373134328358216
+        },
+        "second_arm": "bc_base",
+        "slice": "unseen",
+        "status": "secondary_not_prespecified",
+        "upper": 0.09625070799590145
+      },
+      {
+        "bundles": 6,
+        "first_arm": "recovery_aggregation",
+        "level": 0.95,
+        "lower": 0.1112705695334644,
+        "mean": 0.18781094527363185,
+        "method": "paired_t",
+        "per_bundle_deltas": {
+          "B00": 0.22947761194029848,
+          "B01": 0.20522388059701502,
+          "B02": 0.22201492537313428,
+          "B03": 0.16791044776119401,
+          "B04": 0.2518656716417911,
+          "B05": 0.050373134328358216
+        },
+        "second_arm": "bc_base",
+        "slice": "unseen",
+        "status": "secondary_not_prespecified",
+        "upper": 0.2643513210137993
+      }
+    ],
+    "status": "SECONDARY, not prespecified"
+  },
+  "eligibility": {
+    "candidate_scenarios": 800,
+    "eligible_scenarios": 536,
+    "manifest_hash": "183a3726fad6cbbbfab8ed62abd8c134a814d9668a3efd367901ad936194cdcc",
+    "retained_fraction": 0.67
+  },
+  "experiment_id": "grounded-recovery",
+  "generated_at": "2026-08-30T14:18:54Z",
+  "methods": [
+    {
+      "id": "bc_base",
+      "label": "BC base (no added labels)"
+    },
+    {
+      "id": "extra_demo",
+      "label": "Extra demonstrations"
+    },
+    {
+      "id": "recovery",
+      "label": "Recovery aggregation"
+    }
+  ],
+  "primary_summary": {
+    "analysis_status": "confirmatory",
+    "claim_state": "support",
+    "interval": {
+      "level": 0.95,
+      "lower": 0.10019895387720826,
+      "method": "paired_t",
+      "upper": 0.18587069786408525
+    },
+    "mean_paired_difference": 0.14303482587064675,
+    "pipeline_replicates": 6,
+    "precision": {
+      "achieved_half_width": 0.042835871993438496,
+      "desired_half_width": 0.05,
+      "target_met": true
+    },
+    "sensitivity": {
+      "level": 0.95,
+      "lower": 0.10631218905472636,
+      "mean": 0.14224657960199005,
+      "method": "crossed_two_way_cluster_bootstrap",
+      "replicates": 2000,
+      "seed": 5462751878967032862,
+      "upper": 0.18345771144278608
+    }
+  },
+  "protocol": {
+    "code_commit": null,
+    "hash": "e777efe2d8f83c39ca31e7744162586833debc035eaf3970daaa04f10905ee0d",
+    "primary_contrast": "recovery_aggregation_minus_extra_demonstrations",
+    "primary_endpoint": "eligible_unseen_one_corruption_itt_success",
+    "sesoi_absolute_success": 0.05,
+    "version": "0.1.0"
+  },
+  "replicates": [
+    {
+      "bundle_id": "B00",
+      "outcomes": [
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "bc_base",
+          "slice": "clean",
+          "success_rate": 0.7611940298507462,
+          "successful_episodes": 408
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 526,
+          "method": "bc_base",
+          "slice": "matched",
+          "success_rate": 0.6380597014925373,
+          "successful_episodes": 342
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 536,
+          "method": "bc_base",
+          "slice": "unseen",
+          "success_rate": 0.6361940298507462,
+          "successful_episodes": 341
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "extra_demo",
+          "slice": "clean",
+          "success_rate": 0.8339552238805971,
+          "successful_episodes": 447
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 523,
+          "method": "extra_demo",
+          "slice": "matched",
+          "success_rate": 0.7164179104477612,
+          "successful_episodes": 384
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 536,
+          "method": "extra_demo",
+          "slice": "unseen",
+          "success_rate": 0.7201492537313433,
+          "successful_episodes": 386
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "recovery",
+          "slice": "clean",
+          "success_rate": 0.8805970149253731,
+          "successful_episodes": 472
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 522,
+          "method": "recovery",
+          "slice": "matched",
+          "success_rate": 0.871268656716418,
+          "successful_episodes": 467
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 536,
+          "method": "recovery",
+          "slice": "unseen",
+          "success_rate": 0.8656716417910447,
+          "successful_episodes": 464
+        }
+      ],
+      "primary_paired_difference": 0.1455223880597014
+    },
+    {
+      "bundle_id": "B01",
+      "outcomes": [
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "bc_base",
+          "slice": "clean",
+          "success_rate": 0.7126865671641791,
+          "successful_episodes": 382
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 525,
+          "method": "bc_base",
+          "slice": "matched",
+          "success_rate": 0.6175373134328358,
+          "successful_episodes": 331
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 534,
+          "method": "bc_base",
+          "slice": "unseen",
+          "success_rate": 0.628731343283582,
+          "successful_episodes": 337
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "extra_demo",
+          "slice": "clean",
+          "success_rate": 0.7817164179104478,
+          "successful_episodes": 419
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 526,
+          "method": "extra_demo",
+          "slice": "matched",
+          "success_rate": 0.6828358208955224,
+          "successful_episodes": 366
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 534,
+          "method": "extra_demo",
+          "slice": "unseen",
+          "success_rate": 0.6940298507462687,
+          "successful_episodes": 372
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "recovery",
+          "slice": "clean",
+          "success_rate": 0.8395522388059702,
+          "successful_episodes": 450
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 526,
+          "method": "recovery",
+          "slice": "matched",
+          "success_rate": 0.8544776119402985,
+          "successful_episodes": 458
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 535,
+          "method": "recovery",
+          "slice": "unseen",
+          "success_rate": 0.8339552238805971,
+          "successful_episodes": 447
+        }
+      ],
+      "primary_paired_difference": 0.1399253731343284
+    },
+    {
+      "bundle_id": "B02",
+      "outcomes": [
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "bc_base",
+          "slice": "clean",
+          "success_rate": 0.7369402985074627,
+          "successful_episodes": 395
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 524,
+          "method": "bc_base",
+          "slice": "matched",
+          "success_rate": 0.6063432835820896,
+          "successful_episodes": 325
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 535,
+          "method": "bc_base",
+          "slice": "unseen",
+          "success_rate": 0.6007462686567164,
+          "successful_episodes": 322
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "extra_demo",
+          "slice": "clean",
+          "success_rate": 0.8003731343283582,
+          "successful_episodes": 429
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 523,
+          "method": "extra_demo",
+          "slice": "matched",
+          "success_rate": 0.7313432835820896,
+          "successful_episodes": 392
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 536,
+          "method": "extra_demo",
+          "slice": "unseen",
+          "success_rate": 0.6716417910447762,
+          "successful_episodes": 360
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "recovery",
+          "slice": "clean",
+          "success_rate": 0.8638059701492538,
+          "successful_episodes": 463
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 523,
+          "method": "recovery",
+          "slice": "matched",
+          "success_rate": 0.8395522388059702,
+          "successful_episodes": 450
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 536,
+          "method": "recovery",
+          "slice": "unseen",
+          "success_rate": 0.8227611940298507,
+          "successful_episodes": 441
+        }
+      ],
+      "primary_paired_difference": 0.15111940298507454
+    },
+    {
+      "bundle_id": "B03",
+      "outcomes": [
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "bc_base",
+          "slice": "clean",
+          "success_rate": 0.7966417910447762,
+          "successful_episodes": 427
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 522,
+          "method": "bc_base",
+          "slice": "matched",
+          "success_rate": 0.7444029850746269,
+          "successful_episodes": 399
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 535,
+          "method": "bc_base",
+          "slice": "unseen",
+          "success_rate": 0.6996268656716418,
+          "successful_episodes": 375
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "extra_demo",
+          "slice": "clean",
+          "success_rate": 0.8246268656716418,
+          "successful_episodes": 442
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 520,
+          "method": "extra_demo",
+          "slice": "matched",
+          "success_rate": 0.7630597014925373,
+          "successful_episodes": 409
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 535,
+          "method": "extra_demo",
+          "slice": "unseen",
+          "success_rate": 0.7611940298507462,
+          "successful_episodes": 408
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "recovery",
+          "slice": "clean",
+          "success_rate": 0.8768656716417911,
+          "successful_episodes": 470
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 525,
+          "method": "recovery",
+          "slice": "matched",
+          "success_rate": 0.875,
+          "successful_episodes": 469
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 534,
+          "method": "recovery",
+          "slice": "unseen",
+          "success_rate": 0.8675373134328358,
+          "successful_episodes": 465
+        }
+      ],
+      "primary_paired_difference": 0.10634328358208955
+    },
+    {
+      "bundle_id": "B04",
+      "outcomes": [
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "bc_base",
+          "slice": "clean",
+          "success_rate": 0.7126865671641791,
+          "successful_episodes": 382
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 523,
+          "method": "bc_base",
+          "slice": "matched",
+          "success_rate": 0.5932835820895522,
+          "successful_episodes": 318
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 535,
+          "method": "bc_base",
+          "slice": "unseen",
+          "success_rate": 0.5802238805970149,
+          "successful_episodes": 311
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "extra_demo",
+          "slice": "clean",
+          "success_rate": 0.753731343283582,
+          "successful_episodes": 404
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 524,
+          "method": "extra_demo",
+          "slice": "matched",
+          "success_rate": 0.6753731343283582,
+          "successful_episodes": 362
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 536,
+          "method": "extra_demo",
+          "slice": "unseen",
+          "success_rate": 0.6175373134328358,
+          "successful_episodes": 331
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "recovery",
+          "slice": "clean",
+          "success_rate": 0.8470149253731343,
+          "successful_episodes": 454
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 523,
+          "method": "recovery",
+          "slice": "matched",
+          "success_rate": 0.8414179104477612,
+          "successful_episodes": 451
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 535,
+          "method": "recovery",
+          "slice": "unseen",
+          "success_rate": 0.832089552238806,
+          "successful_episodes": 446
+        }
+      ],
+      "primary_paired_difference": 0.21455223880597019
+    },
+    {
+      "bundle_id": "B05",
+      "outcomes": [
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "bc_base",
+          "slice": "clean",
+          "success_rate": 0.8563432835820896,
+          "successful_episodes": 459
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 522,
+          "method": "bc_base",
+          "slice": "matched",
+          "success_rate": 0.8115671641791045,
+          "successful_episodes": 435
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 535,
+          "method": "bc_base",
+          "slice": "unseen",
+          "success_rate": 0.8003731343283582,
+          "successful_episodes": 429
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "extra_demo",
+          "slice": "clean",
+          "success_rate": 0.8227611940298507,
+          "successful_episodes": 441
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 522,
+          "method": "extra_demo",
+          "slice": "matched",
+          "success_rate": 0.7817164179104478,
+          "successful_episodes": 419
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 535,
+          "method": "extra_demo",
+          "slice": "unseen",
+          "success_rate": 0.75,
+          "successful_episodes": 402
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": null,
+          "method": "recovery",
+          "slice": "clean",
+          "success_rate": 0.8563432835820896,
+          "successful_episodes": 459
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 521,
+          "method": "recovery",
+          "slice": "matched",
+          "success_rate": 0.8600746268656716,
+          "successful_episodes": 461
+        },
+        {
+          "assigned_episodes": 536,
+          "intervention_delivered": 534,
+          "method": "recovery",
+          "slice": "unseen",
+          "success_rate": 0.8507462686567164,
+          "successful_episodes": 456
+        }
+      ],
+      "primary_paired_difference": 0.10074626865671643
+    }
+  ],
+  "schema_version": "1.0.0",
+  "slices": [
+    {
+      "id": "clean",
+      "label": "Clean",
+      "role": "secondary"
+    },
+    {
+      "id": "matched",
+      "label": "Matched perturbation",
+      "role": "secondary"
+    },
+    {
+      "id": "unseen",
+      "label": "Unseen perturbation",
+      "role": "primary"
+    }
+  ],
+  "status": "results",
+  "warnings": []
+}

@@ -1,0 +1,190 @@
+{
+  "files": [
+    {
+      "bytes": 1584,
+      "path": "claim-evidence.json",
+      "role": "evidence",
+      "sha256": "770f9d30d62c064bba50be138397f09ad112e210f88f3445ceaf9341b25e95fc"
+    },
+    {
+      "bytes": 24383,
+      "path": "experiment-summary.json",
+      "role": "evidence",
+      "sha256": "219044c2c03f3f64fe84974dcf9eb52bb330877e1a582ae78c832cfa57fc7c2e"
+    },
+    {
+      "bytes": 2523,
+      "path": "exploratory/exploratory_opening.json",
+      "role": "evidence",
+      "sha256": "9748dccddd8ee29e39753ddea839e33134eb700775b366e8ea0aeb8e589e1438"
+    },
+    {
+      "bytes": 7248,
+      "path": "exploratory/exploratory_summary.json",
+      "role": "evidence",
+      "sha256": "c5b311dd7ad1fadddf5faf5809c57ef0559b41ba61ec865226438cf253f3d63a"
+    },
+    {
+      "bytes": 58134,
+      "path": "exploratory/figures/expert_agreement.png",
+      "role": "evidence",
+      "sha256": "15dfb58f78759413b8e905fcfa38ba608dc5f03b0423f35f3c52c8b59da6a21f"
+    },
+    {
+      "bytes": 42839,
+      "path": "exploratory/figures/two_corruption.png",
+      "role": "evidence",
+      "sha256": "ad96b2961bccebd5425807448e4b37efe1ace8fb573039031aa2308baf2c6b23"
+    },
+    {
+      "bytes": 875,
+      "path": "exploratory/tables/expert_agreement.csv",
+      "role": "evidence",
+      "sha256": "582b6d36d8baad6b998d625c4ac65b5c794c8b6705f13db26ac9a48e18f6da37"
+    },
+    {
+      "bytes": 680,
+      "path": "exploratory/tables/two_corruption.csv",
+      "role": "evidence",
+      "sha256": "6c944865d80c280e59e676022fa9e118de47cc40b9a08f53a3f883905be56e3a"
+    },
+    {
+      "bytes": 79695,
+      "path": "figures/budget_exposure.png",
+      "role": "evidence",
+      "sha256": "9e13683f1d830c29a6277642eed885126d895d88aa0e0f84b07efab742e7087f"
+    },
+    {
+      "bytes": 48724,
+      "path": "figures/failure_composition.png",
+      "role": "evidence",
+      "sha256": "b1c0d608b60f282f7c41c6e9bb801bf482fdd6e826daa3bf3e8dc0b4cee8a633"
+    },
+    {
+      "bytes": 44960,
+      "path": "figures/intervention_delivery.png",
+      "role": "evidence",
+      "sha256": "8b81e080861af8c41025efb628116eb29209883971cc6d135eaf61c32e97f3d7"
+    },
+    {
+      "bytes": 50026,
+      "path": "figures/primary_paired_effect.png",
+      "role": "evidence",
+      "sha256": "85928842886b8e9a82c85b7ed708da24750e33a753cca6222a6f13a48cd72b41"
+    },
+    {
+      "bytes": 74741,
+      "path": "figures/recovery_profile.png",
+      "role": "evidence",
+      "sha256": "cf633c0aec9ca8a1ba444ed24697c7bd8e0e6b60a70676e3d3d51c6898dcc7a8"
+    },
+    {
+      "bytes": 57050,
+      "path": "figures/secondary_contrasts.png",
+      "role": "evidence",
+      "sha256": "2c526568cd1089f9da18982d66fb32b04f9930ffaada304125c16b79029e25d0"
+    },
+    {
+      "bytes": 63460,
+      "path": "figures/success_matrix.png",
+      "role": "evidence",
+      "sha256": "c6042c9c34a6a74c2bc95d211b83b6fa8ba9fc6aa68660c80527dee682fa49e9"
+    },
+    {
+      "bytes": 3652,
+      "path": "media/media_manifest.json",
+      "role": "evidence",
+      "sha256": "6d57d2f4f540eb2d3f371a5b64e7496ce9b4881ac7bf48874f2202a0552e81fe"
+    },
+    {
+      "bytes": 162328,
+      "path": "media/oracle_nominal.gif",
+      "role": "evidence",
+      "sha256": "05839969d0aa03174481c83eb0db89c15e6e1ad573219638a2d8b72eb6d3bc76"
+    },
+    {
+      "bytes": 33157,
+      "path": "media/oracle_nominal.mp4",
+      "role": "evidence",
+      "sha256": "155d3e695cb309a1d5844708261b9c172ab9d3746db22c0d5c388c5bc002f480"
+    },
+    {
+      "bytes": 246468,
+      "path": "media/unseen_paired_contrast.gif",
+      "role": "evidence",
+      "sha256": "3a45c8d54f7d797f245bb0a24d1c42ddfef996fd87b10420828daa9de4acd768"
+    },
+    {
+      "bytes": 55138,
+      "path": "media/unseen_paired_contrast.mp4",
+      "role": "evidence",
+      "sha256": "0edc263d89365742414fe9fb7483e5a72d399097f0480b0cdda0919ef7a102ce"
+    },
+    {
+      "bytes": 696584,
+      "path": "media/unseen_recovery_failure.gif",
+      "role": "evidence",
+      "sha256": "72cdfac2f1e2d6eb03c3425356b0486963598f8b65b75dfc3f077626801c16b6"
+    },
+    {
+      "bytes": 87418,
+      "path": "media/unseen_recovery_failure.mp4",
+      "role": "evidence",
+      "sha256": "b61bea2c079d261c9a9ec6f43bc8340b8179ff44dda4269967ffc9afffecba58"
+    },
+    {
+      "bytes": 425,
+      "path": "site-status.json",
+      "role": "status",
+      "sha256": "d2a5def7d5f9c4d41025fd252a5536bb3ae4743fbafdc729fdda4a43892a3463"
+    },
+    {
+      "bytes": 3307,
+      "path": "tables/budget_exposure.csv",
+      "role": "evidence",
+      "sha256": "292cefa791ad0b975cce6024021d1e50ae65273cad841514d4e804939b97f579"
+    },
+    {
+      "bytes": 992,
+      "path": "tables/corruption_time_profile.csv",
+      "role": "evidence",
+      "sha256": "b9b4555cdcbe851833b6a0ed9d6d7fa19871df0e8e971d827a0da9b444d42b1a"
+    },
+    {
+      "bytes": 2363,
+      "path": "tables/failure_composition.csv",
+      "role": "evidence",
+      "sha256": "88874bd2775dfbd43ea196146da9f9ac13da0a79511ef8d07375f49057dda73f"
+    },
+    {
+      "bytes": 1683,
+      "path": "tables/intervention_delivery.csv",
+      "role": "evidence",
+      "sha256": "3b8404dc151eb85047d29a16c2a8ea316fe4a3b8010842eed640829ed69abd2e"
+    },
+    {
+      "bytes": 290,
+      "path": "tables/paired_effects.csv",
+      "role": "evidence",
+      "sha256": "75313c6035a29dfe227c37d19f41f41d8c96a862f7d399acdf092d4427db90bb"
+    },
+    {
+      "bytes": 2694,
+      "path": "tables/pipeline_metrics.csv",
+      "role": "evidence",
+      "sha256": "fb009bccd7ebf85e839f9a91dd4f254bb5cf2f95ed33b52d421cfb979fd085f1"
+    },
+    {
+      "bytes": 2887,
+      "path": "tables/recovery_overhead.csv",
+      "role": "evidence",
+      "sha256": "89e45d8b462129b0508c057ebd2521dc5207c9a44ced2803bc7d4a410eb26ac3"
+    },
+    {
+      "bytes": 457,
+      "path": "tables/secondary_contrasts.csv",
+      "role": "evidence",
+      "sha256": "fe039929d180ae16c36cd6472b7a64cf1cff51a77b2c78fd9e6d574c6e7c1cdf"
+    }
+  ]
+}

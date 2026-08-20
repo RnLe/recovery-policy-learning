@@ -1,0 +1,116 @@
+{
+  "contract_hash": "e777efe2d8f83c39ca31e7744162586833debc035eaf3970daaa04f10905ee0d",
+  "media": [
+    {
+      "artifact_id": "unseen_paired_contrast",
+      "bundle": "B00",
+      "environment_seed": 7915073690689100435,
+      "files": {
+        "gif": {
+          "path": "unseen_paired_contrast.gif",
+          "sha256": "3a45c8d54f7d797f245bb0a24d1c42ddfef996fd87b10420828daa9de4acd768"
+        },
+        "mp4": {
+          "path": "unseen_paired_contrast.mp4",
+          "sha256": "0edc263d89365742414fe9fb7483e5a72d399097f0480b0cdda0919ef7a102ce"
+        }
+      },
+      "kind": "empirical",
+      "operator": "rot_minus",
+      "outcomes": {
+        "extra_demonstrations": {
+          "steps": 144,
+          "success": false
+        },
+        "recovery_aggregation": {
+          "steps": 21,
+          "success": true
+        }
+      },
+      "presentation": {
+        "idle_cut": {
+          "extra_demonstrations": {
+            "shown_through_step": 14,
+            "true_final_step": 144,
+            "unchanged_from_step": 4
+          },
+          "recovery_aggregation": null
+        },
+        "time_lapse_stride": 1
+      },
+      "scenario_hash": "c512654f36bbfa0769e2c2da1b5fd10bf94dd767afc3b4266717fc1e2d8595e0",
+      "scenario_ordinal": 6,
+      "scheduled_time": 3,
+      "selection_rule": "smallest eligible-unseen ordinal with recovery success and extra-demonstrations failure (both delivered), reference bundle",
+      "slice": "unseen"
+    },
+    {
+      "artifact_id": "unseen_recovery_failure",
+      "bundle": "B00",
+      "environment_seed": 1776177178345632973,
+      "files": {
+        "gif": {
+          "path": "unseen_recovery_failure.gif",
+          "sha256": "72cdfac2f1e2d6eb03c3425356b0486963598f8b65b75dfc3f077626801c16b6"
+        },
+        "mp4": {
+          "path": "unseen_recovery_failure.mp4",
+          "sha256": "b61bea2c079d261c9a9ec6f43bc8340b8179ff44dda4269967ffc9afffecba58"
+        }
+      },
+      "kind": "empirical",
+      "operator": "rot_minus",
+      "outcomes": {
+        "extra_demonstrations": {
+          "steps": 144,
+          "success": false
+        },
+        "recovery_aggregation": {
+          "steps": 144,
+          "success": false
+        }
+      },
+      "presentation": {
+        "idle_cut": {
+          "extra_demonstrations": {
+            "shown_through_step": 32,
+            "true_final_step": 144,
+            "unchanged_from_step": 22
+          },
+          "recovery_aggregation": null
+        },
+        "time_lapse_stride": 3
+      },
+      "scenario_hash": "4885ac1d242c65580ca9d83e9c1e19e9bcf31a64943789dc84fba5e8b2fceec1",
+      "scenario_ordinal": 4,
+      "scheduled_time": 5,
+      "selection_rule": "smallest eligible-unseen ordinal where the recovery arm failed with a delivered corruption, reference bundle",
+      "slice": "unseen"
+    },
+    {
+      "artifact_id": "oracle_nominal",
+      "environment_seed": 602680820053253196,
+      "files": {
+        "gif": {
+          "path": "oracle_nominal.gif",
+          "sha256": "05839969d0aa03174481c83eb0db89c15e6e1ad573219638a2d8b72eb6d3bc76"
+        },
+        "mp4": {
+          "path": "oracle_nominal.mp4",
+          "sha256": "155d3e695cb309a1d5844708261b9c172ab9d3746db22c0d5c388c5bc002f480"
+        }
+      },
+      "kind": "illustrative",
+      "outcomes": {
+        "oracle": {
+          "steps": 23,
+          "success": true
+        }
+      },
+      "scenario_hash": "d8d317fa96d90deaf9ca3a8dc6d73e06338938daafa60a40e15c7d8a0de46fe1",
+      "scenario_ordinal": 0,
+      "selection_rule": "visualization-split ordinal 0 under the scripted oracle",
+      "slice": "visualization"
+    }
+  ]
+}

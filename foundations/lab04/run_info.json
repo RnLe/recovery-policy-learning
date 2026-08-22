@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "run",
+    "all",
+    "--force"
+  ],
+  "elapsed_seconds": 116.8,
+  "finished_unix": 1788098936.8,
+  "lab": "lab04"
+}

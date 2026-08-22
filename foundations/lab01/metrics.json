@@ -1,0 +1,147 @@
+{
+  "evidence_label": "EXPLORATORY, FOUNDATIONS (pedagogical companion; not confirmatory evidence)",
+  "lab": "lab01",
+  "metrics": {
+    "census": {
+      "agent_start_direction_counts": {
+        "0": 117,
+        "1": 125,
+        "2": 126,
+        "3": 132
+      },
+      "door_state_counts": {
+        "open": 4528
+      },
+      "doors_open": true,
+      "grid_shapes": [
+        "10x10"
+      ],
+      "mission_color_counts": {
+        "blue": 87,
+        "green": 76,
+        "grey": 95,
+        "purple": 97,
+        "red": 80,
+        "yellow": 65
+      },
+      "mission_kind_counts": {
+        "ball": 160,
+        "box": 173,
+        "key": 167
+      },
+      "n_seeds": 500,
+      "object_totals": {
+        "ball": 160,
+        "box": 173,
+        "door": 4528,
+        "key": 167
+      },
+      "top_missions": [
+        [
+          "go to the blue ball",
+          39
+        ],
+        [
+          "go to the grey key",
+          38
+        ],
+        [
+          "go to the grey box",
+          34
+        ],
+        [
+          "go to the purple ball",
+          33
+        ],
+        [
+          "go to the purple key",
+          32
+        ]
+      ],
+      "unique_missions": 18,
+      "unparsed_missions": 0
+    },
+    "census_doors_closed_contrast": {
+      "agent_start_direction_counts": {
+        "0": 27,
+        "1": 23,
+        "2": 29,
+        "3": 21
+      },
+      "door_state_counts": {
+        "closed": 915
+      },
+      "doors_open": false,
+      "grid_shapes": [
+        "10x10"
+      ],
+      "mission_color_counts": {
+        "blue": 14,
+        "green": 18,
+        "grey": 21,
+        "purple": 18,
+        "red": 17,
+        "yellow": 12
+      },
+      "mission_kind_counts": {
+        "ball": 32,
+        "box": 32,
+        "key": 36
+      },
+      "n_seeds": 100,
+      "object_totals": {
+        "ball": 32,
+        "box": 32,
+        "door": 915,
+        "key": 36
+      },
+      "top_missions": [
+        [
+          "go to the grey box",
+          9
+        ],
+        [
+          "go to the purple key",
+          8
+        ],
+        [
+          "go to the red box",
+          8
+        ],
+        [
+          "go to the blue key",
+          7
+        ],
+        [
+          "go to the grey key",
+          7
+        ]
+      ],
+      "unique_missions": 18,
+      "unparsed_missions": 0
+    },
+    "environment": {
+      "doors_open": true,
+      "env_id": "BabyAI-GoToObjMazeS4-v0",
+      "frozen_action_ids": [
+        0,
+        1,
+        2
+      ],
+      "frozen_action_names": [
+        "left",
+        "right",
+        "forward"
+      ],
+      "max_steps": 144,
+      "observation_image_shape": [
+        7,
+        7,
+        3
+      ]
+    }
+  },
+  "root_seed": 20260826,
+  "seed_domain": "gr-foundations",
+  "title": "The world: BabyAI/MiniGrid"
+}

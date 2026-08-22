@@ -1,0 +1,5 @@
+protocol,success,failure,support_error,bot_error
+honest,163,0,0,0
+lied_to,163,0,0,0
+never_informed,163,0,0,0
+double_replan,163,0,0,0

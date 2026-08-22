@@ -1,0 +1,277 @@
+{
+  "evidence_label": "EXPLORATORY, FOUNDATIONS (pedagogical companion; not confirmatory evidence)",
+  "lab": "lab04",
+  "metrics": {
+    "behavior_cloning": {
+      "batch_episodes": 16,
+      "dataset_counters": {
+        "collected": 200,
+        "oracle_unsupported": 0,
+        "requested": 200
+      },
+      "device": "cuda",
+      "holdout_counters": {
+        "collected": 100,
+        "oracle_unsupported": 0,
+        "requested": 100
+      },
+      "results": {
+        "memoryless": [
+          {
+            "holdout": {
+              "episodes": 100,
+              "mean_steps": 49.54,
+              "success_rate": 0.73,
+              "successes": 73
+            },
+            "model_digest": "31e5bb58f1df510dcd60ee57e0cef15487bd9130e5b6d45b1ec781aeb1aa203c",
+            "open_loop_accuracy": 0.895738203957382,
+            "parameters": 96723,
+            "seed_index": 0,
+            "train_scenarios": {
+              "episodes": 100,
+              "mean_steps": 15.73,
+              "success_rate": 0.98,
+              "successes": 98
+            }
+          },
+          {
+            "holdout": {
+              "episodes": 100,
+              "mean_steps": 59.58,
+              "success_rate": 0.64,
+              "successes": 64
+            },
+            "model_digest": "57bb3fb2caf3de6b611b844ff8635b78f06859e8e3adf80c3823ae2bcbfee1e2",
+            "open_loop_accuracy": 0.8972602739726028,
+            "parameters": 96723,
+            "seed_index": 1,
+            "train_scenarios": {
+              "episodes": 100,
+              "mean_steps": 14.52,
+              "success_rate": 0.99,
+              "successes": 99
+            }
+          },
+          {
+            "holdout": {
+              "episodes": 100,
+              "mean_steps": 49.69,
+              "success_rate": 0.72,
+              "successes": 72
+            },
+            "model_digest": "5af0eb3fd1a6bc4acff138bc4517dcf6ef2e6aef6b8249896a2f9e9488d45a80",
+            "open_loop_accuracy": 0.9117199391171994,
+            "parameters": 96723,
+            "seed_index": 2,
+            "train_scenarios": {
+              "episodes": 100,
+              "mean_steps": 15.73,
+              "success_rate": 0.98,
+              "successes": 98
+            }
+          }
+        ],
+        "recurrent": [
+          {
+            "holdout": {
+              "episodes": 100,
+              "mean_steps": 36.83,
+              "success_rate": 0.84,
+              "successes": 84
+            },
+            "model_digest": "0084304f2d03398c12af58b38ad489dcd224bca3ce2e6d0b0ed6b2ff498abdfc",
+            "open_loop_accuracy": 0.9208523592085236,
+            "parameters": 179283,
+            "seed_index": 0,
+            "train_scenarios": {
+              "episodes": 100,
+              "mean_steps": 13.45,
+              "success_rate": 1.0,
+              "successes": 100
+            }
+          },
+          {
+            "holdout": {
+              "episodes": 100,
+              "mean_steps": 42.3,
+              "success_rate": 0.8,
+              "successes": 80
+            },
+            "model_digest": "19c09e79da80021568acc4b7f01ff18f93f2205ae885bedbeda387b6dcc3e231",
+            "open_loop_accuracy": 0.91324200913242,
+            "parameters": 179283,
+            "seed_index": 1,
+            "train_scenarios": {
+              "episodes": 100,
+              "mean_steps": 13.45,
+              "success_rate": 1.0,
+              "successes": 100
+            }
+          },
+          {
+            "holdout": {
+              "episodes": 100,
+              "mean_steps": 34.4,
+              "success_rate": 0.87,
+              "successes": 87
+            },
+            "model_digest": "fbdd67108d2e7b939a1766680df6d6cc0e3786bac16351200ba010314a0c29c7",
+            "open_loop_accuracy": 0.9254185692541856,
+            "parameters": 179283,
+            "seed_index": 2,
+            "train_scenarios": {
+              "episodes": 100,
+              "mean_steps": 13.45,
+              "success_rate": 1.0,
+              "successes": 100
+            }
+          }
+        ]
+      },
+      "total_labels": 2663,
+      "updates": 1500,
+      "vocabulary_size": 14
+    },
+    "qlearning": {
+      "alpha": 0.5,
+      "best_greedy_steps": 6.0,
+      "episodes": 400,
+      "epsilon": 0.15,
+      "final_greedy_success": true,
+      "gamma": 0.95,
+      "history": [
+        {
+          "episode": 0.0,
+          "greedy_return": 0.0,
+          "greedy_steps": 60.0,
+          "greedy_success": 0.0
+        },
+        {
+          "episode": 20.0,
+          "greedy_return": 0.0,
+          "greedy_steps": 60.0,
+          "greedy_success": 0.0
+        },
+        {
+          "episode": 40.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 60.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 80.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 100.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 120.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 140.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 160.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 180.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 200.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 220.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 240.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 260.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 280.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 300.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 320.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 340.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 360.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 380.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        },
+        {
+          "episode": 399.0,
+          "greedy_return": 0.946,
+          "greedy_steps": 6.0,
+          "greedy_success": 1.0
+        }
+      ],
+      "states_in_table": 32
+    }
+  },
+  "root_seed": 20260826,
+  "seed_domain": "gr-foundations",
+  "title": "Learning paradigms: reinforcement versus imitation"
+}

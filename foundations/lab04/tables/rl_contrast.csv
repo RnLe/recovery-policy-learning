@@ -1,0 +1,6 @@
+property,toy_mdp,study_task
+states the learner must handle,32 (fits in a table),"unbounded: every seed generates a new world (Lab 2 saw 3,746 distinct observations in 300 episodes)"
+observability,full (position read directly),partial 7x7 egocentric view (Lab 2)
+language,none,mission string decides which object is correct
+reward signal,"terminal, reachable by epsilon-greedy exploration",terminal-only; random walking succeeds sometimes (Lab 3: 27.3%) but assigns no credit to individual actions
+supervision used by the study,reward only,oracle action labels only (reward is only an evaluation metric)

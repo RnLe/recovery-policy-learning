@@ -1,0 +1,32 @@
+{
+  "evidence_label": "EXPLORATORY, FOUNDATIONS (pedagogical companion; not confirmatory evidence)",
+  "lab": "lab02",
+  "metrics": {
+    "aliasing": {
+      "aliased_classes": 54,
+      "cross_world_aliased_classes": 54,
+      "label_heterogeneous_classes": 5,
+      "memoryless_error_lower_bound": 0.03004073319755601,
+      "observation_classes": 3746,
+      "total_states": 3928
+    },
+    "rollouts": {
+      "episodes": 300,
+      "oracle_unsupported": 0,
+      "successes": 300,
+      "truncated": 0
+    },
+    "showcase": {
+      "action_a": "left",
+      "action_b": "forward",
+      "episode_a": 26,
+      "episode_b": 54,
+      "mission": "go to the green key",
+      "t_a": 0,
+      "t_b": 11
+    }
+  },
+  "root_seed": 20260826,
+  "seed_domain": "gr-foundations",
+  "title": "Decision processes: from MDP to POMDP"
+}

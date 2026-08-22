@@ -1,0 +1,72 @@
+{
+  "evidence_label": "EXPLORATORY, FOUNDATIONS (pedagogical companion; not confirmatory evidence)",
+  "lab": "lab03",
+  "metrics": {
+    "oracle_path_length_percentiles": {
+      "10": 3.0,
+      "50": 11.0,
+      "90": 22.0
+    },
+    "spectrum": {
+      "oracle": {
+        "episodes": 300,
+        "mean_steps": 12.12,
+        "success_rate": 1.0,
+        "successes": 300,
+        "unsupported_episodes": 0
+      },
+      "random": {
+        "episodes": 300,
+        "mean_steps": 119.73333333333333,
+        "success_rate": 0.2733333333333333,
+        "successes": 82
+      },
+      "wall_follower": {
+        "episodes": 300,
+        "mean_steps": 92.35,
+        "success_rate": 0.5433333333333333,
+        "successes": 163
+      }
+    },
+    "synchronization": {
+      "counts": {
+        "double_replan": {
+          "bot_error": 0,
+          "failure": 0,
+          "success": 163,
+          "support_error": 0
+        },
+        "honest": {
+          "bot_error": 0,
+          "failure": 0,
+          "success": 163,
+          "support_error": 0
+        },
+        "lied_to": {
+          "bot_error": 0,
+          "failure": 0,
+          "success": 163,
+          "support_error": 0
+        },
+        "never_informed": {
+          "bot_error": 0,
+          "failure": 0,
+          "success": 163,
+          "support_error": 0
+        }
+      },
+      "pairs_delivered": 163,
+      "pairs_planned": 200,
+      "pairs_undelivered": 37,
+      "success_rates": {
+        "double_replan": 1.0,
+        "honest": 1.0,
+        "lied_to": 1.0,
+        "never_informed": 1.0
+      }
+    }
+  },
+  "root_seed": 20260826,
+  "seed_domain": "gr-foundations",
+  "title": "Policies, oracles, and where labels come from"
+}

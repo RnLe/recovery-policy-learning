@@ -1,0 +1,277 @@
+{
+  "evidence_label": "EXPLORATORY, FOUNDATIONS (pedagogical companion; not confirmatory evidence)",
+  "lab": "lab05",
+  "metrics": {
+    "ablation": {
+      "device": "cuda",
+      "results": {
+        "bow_mission": [
+          {
+            "model_digest": "9e031e2a2ec773a6899cf7586e7c4e8da62017b119a2fa1edd3d51b1c340d380",
+            "open_loop_accuracy": 0.9277016742770168,
+            "parameters": 162579,
+            "seed_index": 0,
+            "unseen": {
+              "episodes": 100,
+              "mean_steps": 40.89,
+              "success_rate": 0.79,
+              "successes": 79
+            }
+          },
+          {
+            "model_digest": "c1bcbf93fd03f41596d4b2cfa3e3725cf58f9aa0cd834dc047315811eb22ad2a",
+            "open_loop_accuracy": 0.9223744292237442,
+            "parameters": 162579,
+            "seed_index": 1,
+            "unseen": {
+              "episodes": 100,
+              "mean_steps": 46.23,
+              "success_rate": 0.76,
+              "successes": 76
+            }
+          },
+          {
+            "model_digest": "b6b640146677a580090b682be63a0991b7b536f9ee05f73db5d19e01bc396a9d",
+            "open_loop_accuracy": 0.9322678843226788,
+            "parameters": 162579,
+            "seed_index": 2,
+            "unseen": {
+              "episodes": 100,
+              "mean_steps": 34.02,
+              "success_rate": 0.86,
+              "successes": 86
+            }
+          }
+        ],
+        "full": [
+          {
+            "model_digest": "303c34cd3919bbf69ab7daa957fd22b16bc9e2f88273fd90538844de2567065b",
+            "open_loop_accuracy": 0.926179604261796,
+            "parameters": 179283,
+            "seed_index": 0,
+            "unseen": {
+              "episodes": 100,
+              "mean_steps": 41.36,
+              "success_rate": 0.8,
+              "successes": 80
+            }
+          },
+          {
+            "model_digest": "6325539a85393c53865d6932f8d4b79fa7218be8fbf24fb37f24642398c5ce44",
+            "open_loop_accuracy": 0.9269406392694064,
+            "parameters": 179283,
+            "seed_index": 1,
+            "unseen": {
+              "episodes": 100,
+              "mean_steps": 35.76,
+              "success_rate": 0.85,
+              "successes": 85
+            }
+          },
+          {
+            "model_digest": "f7281eda88c400f1b28a19310b4c250f1b7fc1d9cc24af4ee2e0e70666eb6512",
+            "open_loop_accuracy": 0.9292237442922374,
+            "parameters": 179283,
+            "seed_index": 2,
+            "unseen": {
+              "episodes": 100,
+              "mean_steps": 37.25,
+              "success_rate": 0.84,
+              "successes": 84
+            }
+          }
+        ],
+        "no_memory": [
+          {
+            "model_digest": "5f0376d2673907e2fc383692dec1a78fb4003a96d4f0e6a081e897f1d2e7526e",
+            "open_loop_accuracy": 0.908675799086758,
+            "parameters": 96723,
+            "seed_index": 0,
+            "unseen": {
+              "episodes": 100,
+              "mean_steps": 42.21,
+              "success_rate": 0.79,
+              "successes": 79
+            }
+          },
+          {
+            "model_digest": "0127fcb2da9f63a1d855985812c0b7b967efd1b604b009f9f9b7378b64253763",
+            "open_loop_accuracy": 0.9117199391171994,
+            "parameters": 96723,
+            "seed_index": 1,
+            "unseen": {
+              "episodes": 100,
+              "mean_steps": 39.07,
+              "success_rate": 0.82,
+              "successes": 82
+            }
+          },
+          {
+            "model_digest": "46fb9229271c605800b516abad8cba83e2904b2488f17cb535ea3b033455e619",
+            "open_loop_accuracy": 0.9041095890410958,
+            "parameters": 96723,
+            "seed_index": 2,
+            "unseen": {
+              "episodes": 100,
+              "mean_steps": 43.62,
+              "success_rate": 0.79,
+              "successes": 79
+            }
+          }
+        ],
+        "no_mission": [
+          {
+            "model_digest": "175b92857af10b6b09fc4301246b864a37eeda60abae00f27baa6b1842fe20ed",
+            "open_loop_accuracy": 0.939117199391172,
+            "parameters": 151827,
+            "seed_index": 0,
+            "unseen": {
+              "episodes": 100,
+              "mean_steps": 39.65,
+              "success_rate": 0.8,
+              "successes": 80
+            }
+          },
+          {
+            "model_digest": "215ae6f2567e52767aeb91a4e0f2f2f649c30a2b46c802e5c29e74766224c54d",
+            "open_loop_accuracy": 0.9299847792998478,
+            "parameters": 151827,
+            "seed_index": 1,
+            "unseen": {
+              "episodes": 100,
+              "mean_steps": 36.51,
+              "success_rate": 0.84,
+              "successes": 84
+            }
+          },
+          {
+            "model_digest": "46ca34c7628e381f9f4fe6fd433ee76a9c937618dff5087b87ae5df869f7e169",
+            "open_loop_accuracy": 0.9322678843226788,
+            "parameters": 151827,
+            "seed_index": 2,
+            "unseen": {
+              "episodes": 100,
+              "mean_steps": 33.19,
+              "success_rate": 0.86,
+              "successes": 86
+            }
+          }
+        ],
+        "no_prev_action": [
+          {
+            "model_digest": "cf3cae95b3162ea2038eb0935233abfa2309cd6d841a8bfcbaaf217859aca8a8",
+            "open_loop_accuracy": 0.923896499238965,
+            "parameters": 178227,
+            "seed_index": 0,
+            "unseen": {
+              "episodes": 100,
+              "mean_steps": 40.22,
+              "success_rate": 0.81,
+              "successes": 81
+            }
+          },
+          {
+            "model_digest": "a6f38fce0ae61ee6eabe5afe3c0ff15ea73ff59c7eddfcc7f3c6568386366774",
+            "open_loop_accuracy": 0.923896499238965,
+            "parameters": 178227,
+            "seed_index": 1,
+            "unseen": {
+              "episodes": 100,
+              "mean_steps": 39.11,
+              "success_rate": 0.82,
+              "successes": 82
+            }
+          },
+          {
+            "model_digest": "154a65961da1dc008cbac4681e0ab206223eeccaaf82978bec3c8ecfa850145b",
+            "open_loop_accuracy": 0.9200913242009132,
+            "parameters": 178227,
+            "seed_index": 2,
+            "unseen": {
+              "episodes": 100,
+              "mean_steps": 33.05,
+              "success_rate": 0.87,
+              "successes": 87
+            }
+          }
+        ]
+      },
+      "updates": 1500,
+      "vocabulary_size": 14
+    },
+    "parameter_parity": {
+      "lab_policy": 179507,
+      "recovery_policy": 179507
+    },
+    "walkthrough": [
+      [
+        "object_embedding",
+        176,
+        "2x5x7x7x16"
+      ],
+      [
+        "color_embedding",
+        96,
+        "2x5x7x7x16"
+      ],
+      [
+        "state_embedding",
+        64,
+        "2x5x7x7x16"
+      ],
+      [
+        "observation_conv",
+        23104,
+        "10x32x3x3"
+      ],
+      [
+        "observation_projection",
+        18496,
+        "10x64"
+      ],
+      [
+        "word_embedding",
+        672,
+        "2x6x32"
+      ],
+      [
+        "language_gru",
+        18816,
+        "2x6x64"
+      ],
+      [
+        "direction_embedding",
+        32,
+        "2x5x8"
+      ],
+      [
+        "action_embedding",
+        32,
+        "2x5x8"
+      ],
+      [
+        "fusion",
+        18560,
+        "2x5x128"
+      ],
+      [
+        "policy_gru",
+        99072,
+        "2x5x128"
+      ],
+      [
+        "head",
+        387,
+        "2x5x3"
+      ],
+      [
+        "total",
+        179507,
+        ""
+      ]
+    ]
+  },
+  "root_seed": 20260826,
+  "seed_domain": "gr-foundations",
+  "title": "The policy network, piece by piece"
+}

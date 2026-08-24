@@ -1,0 +1,65 @@
+{
+  "evidence_label": "EXPLORATORY, FOUNDATIONS (pedagogical companion; not confirmatory evidence)",
+  "lab": "lab07",
+  "metrics": {
+    "contract_hash_demo": {
+      "edited_prefix": "fe28e0752e1a6a13",
+      "field": "data.h",
+      "original_prefix": "e777efe2d8f83c39"
+    },
+    "delivery_bias_simulation": {
+      "delivery_rate_a": 0.8432835820895522,
+      "delivery_rate_b": 0.707089552238806,
+      "itt_bias": -0.001027985074627119,
+      "itt_mean": 0.06940111940298507,
+      "per_protocol_bias": -0.03549252241489474,
+      "per_protocol_mean": 0.03493658206271745,
+      "true_everywhere_gap": 0.05,
+      "true_itt_effect": 0.07042910447761219
+    },
+    "hash_chain_demo": {
+      "final_hash_honest": "71369ba36ec56ea60b769fd75f3f1cb8b13877c08e4fd6fe0982f9496db13b29",
+      "final_hash_tampered": "777ad89603505598128d4a3c88e979e7ef3dc2e4a93a4d76962d1d75db377766",
+      "first_mismatch": 2,
+      "rows": 5,
+      "tampered_row": 2
+    },
+    "lab06_reanalysis": {
+      "delivered_fraction_extra": 0.88,
+      "delivered_fraction_recovery": 0.8822222222222222,
+      "itt_delta": 0.033333333333333326,
+      "itt_denominators": [
+        450,
+        450
+      ],
+      "per_protocol_delta": 0.03831768567284943,
+      "per_protocol_denominators": [
+        397,
+        396
+      ]
+    },
+    "pairing_simulation": {
+      "n_bundles": 6,
+      "paired_mean_width": 0.027874779475735082,
+      "paired_power": 1.0,
+      "true_gap": 0.05,
+      "unpaired_mean_width": 0.07717273791016456,
+      "unpaired_power": 0.818
+    },
+    "unmatched_arm": {
+      "budget_labels": 800,
+      "collection": {
+        "episodes_attempted": 128,
+        "episodes_with_labels": 108,
+        "labels": 800,
+        "oracle_unsupported": 0,
+        "undelivered": 20
+      },
+      "scenarios": 150,
+      "unseen_success": 0.8333333333333334
+    }
+  },
+  "root_seed": 20260826,
+  "seed_domain": "gr-foundations",
+  "title": "Measuring honestly: budgets, ITT, and frozen protocols"
+}

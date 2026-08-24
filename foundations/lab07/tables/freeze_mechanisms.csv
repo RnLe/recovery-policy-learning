@@ -1,0 +1,7 @@
+mechanism,prevents,where
+PILOT_TO_FREEZE placeholders,running confirmatory stages with unresolved design choices,config.py refuses FROZEN status while placeholders remain
+"contract hash (canonical JSON, SHA-256)",silent post-hoc edits to the design,every artifact stamps the hash; one flipped field changes it
+scenario manifests with identity hashes,evaluation scenarios drifting between runs,data.py manifests + disjointness audit
+hash-chained ledgers + independent recount,"quiet insertion, deletion, or edit of collected data",integrity.py LedgerWriter / recount_dataset
+single receipted test opening,rerunning the confirmatory evaluation until it looks good,experiment.py opening receipt; write-once results
+preregistered claim decision rule,choosing the interpretation after seeing the numbers,frozen text mapping interval position to support/adverse/rule-out/inconclusive

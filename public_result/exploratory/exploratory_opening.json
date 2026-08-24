@@ -1,0 +1,56 @@
+{
+  "bundles": {
+    "B00": {
+      "bc_base": "233d8ae31e06bd124f24f7f3a649dd1e28dae6fbcf9a8a1a751af5af5b764957",
+      "extra_demonstrations": "dad64b990a4d66941cfba3012cfcdca85914f2ffa57c6ae771c369cf0d56034c",
+      "recovery_aggregation": "4e3f8e57884b3bbf15780189c941c4e996fd62ce763ee1ee6117e3adf724ec72"
+    },
+    "B01": {
+      "bc_base": "642bc51d42825767193cdf9841f783b985972eb4a64279534242c2f15e9edd66",
+      "extra_demonstrations": "d6d800a51542d997ed4d883db9b1a16e4bbf4c71689e69b56013fbff49893800",
+      "recovery_aggregation": "fa39792e177b492af2e0e258ab0f4feff07475f074028daa3e1d035f76863fb8"
+    },
+    "B02": {
+      "bc_base": "770179877621fc2af8cd25e7c9bb2cf11698d3141275d179294e7a2e756f0a26",
+      "extra_demonstrations": "e0a63c1f72f9bd9f9d1aeb65952fef6ac04258ffb501f3f065ce77de01f4012e",
+      "recovery_aggregation": "3c388686a8bc92c21673a517e887f6d0ee3ed1478f6a4d16d623f8cbd35674c7"
+    },
+    "B03": {
+      "bc_base": "957e8141fdc164a09ac0f8ba86100fd49c979c3598c324912b773fe12c1d0dd7",
+      "extra_demonstrations": "002f8f9e073e9a42c6c7650f28d8c7412d3570ca4ebd95fc5ffbb31812a09eed",
+      "recovery_aggregation": "f6622b430975a98f99c4c7cd3d0f0708676dcdd95108c291cddeb8f74a8c965b"
+    },
+    "B04": {
+      "bc_base": "44baa23d2d1bd1c36f42df92d69b8e00c57d80dbec6cc2abe893251a1dccc69e",
+      "extra_demonstrations": "2a2bed499f4e4c7802b0e0e764b279d237520cfe3868a79f5831c47e62917970",
+      "recovery_aggregation": "0f5ec7b17684907a9f1501fbd5a9188728d5fecfca0843cd04365cfaca3d25f5"
+    },
+    "B05": {
+      "bc_base": "1cd5dc1948047af564df9af81635965a0e27159303180368f3e055ca7c9a0302",
+      "extra_demonstrations": "b1dafcf03bbe6cbc3d3eddf9d244375c049f722cb542dd7138e3f4fd9f6626db",
+      "recovery_aggregation": "9e73fbc0d48e80e91e0f15575c5c25be15376320dcd15a5ca99bce827d7ba068"
+    }
+  },
+  "contract_hash": "e777efe2d8f83c39ca31e7744162586833debc035eaf3970daaa04f10905ee0d",
+  "expected_cells": 36,
+  "opened_at_unix": 1788097314.8,
+  "panels": {
+    "expert_agreement": {
+      "manifest_hash": "d7dda0a2505d79362c30c71d0eed0bde417593d1d6863d04235fa438e99687db",
+      "scenarios": 200,
+      "split": "expert_diagnostic"
+    },
+    "two_corruption": {
+      "manifest_hash": "b8fc1c302cd3c01d75c0ebfa3f195358e88a17e453f8cedb0efba3b8055b4588",
+      "operator": "rot_minus",
+      "scenarios": 200,
+      "split": "difficulty_shift",
+      "time_set": [
+        3,
+        5,
+        7
+      ]
+    }
+  },
+  "status": "EXPLORATORY, not prespecified, opened after the confirmatory result"
+}

@@ -1,0 +1,277 @@
+{
+  "bundles": [
+    "B00",
+    "B01",
+    "B02",
+    "B03",
+    "B04",
+    "B05"
+  ],
+  "contract_hash": "e777efe2d8f83c39ca31e7744162586833debc035eaf3970daaa04f10905ee0d",
+  "expert_agreement": {
+    "bc_base": {
+      "mean_agreement_rate": 0.4159691805590267,
+      "mean_success_rate": 0.7991666666666667,
+      "per_bundle": {
+        "B00": {
+          "agreement_rate": 0.4534435261707989,
+          "compared_steps": 7260,
+          "episodes": 200,
+          "success_rate": 0.83
+        },
+        "B01": {
+          "agreement_rate": 0.33374953177675115,
+          "compared_steps": 8009,
+          "episodes": 200,
+          "success_rate": 0.795
+        },
+        "B02": {
+          "agreement_rate": 0.28554565940551563,
+          "compared_steps": 9319,
+          "episodes": 200,
+          "success_rate": 0.74
+        },
+        "B03": {
+          "agreement_rate": 0.4751674459749779,
+          "compared_steps": 7913,
+          "episodes": 200,
+          "success_rate": 0.8
+        },
+        "B04": {
+          "agreement_rate": 0.2907225309961522,
+          "compared_steps": 9356,
+          "episodes": 200,
+          "success_rate": 0.74
+        },
+        "B05": {
+          "agreement_rate": 0.6571863890299644,
+          "compared_steps": 5907,
+          "episodes": 200,
+          "success_rate": 0.89
+        }
+      }
+    },
+    "extra_demonstrations": {
+      "mean_agreement_rate": 0.48512887151797796,
+      "mean_success_rate": 0.8475,
+      "per_bundle": {
+        "B00": {
+          "agreement_rate": 0.48373205741626796,
+          "compared_steps": 6270,
+          "episodes": 200,
+          "success_rate": 0.865
+        },
+        "B01": {
+          "agreement_rate": 0.4395757744906503,
+          "compared_steps": 7166,
+          "episodes": 200,
+          "success_rate": 0.83
+        },
+        "B02": {
+          "agreement_rate": 0.5087719298245614,
+          "compared_steps": 6555,
+          "episodes": 200,
+          "success_rate": 0.855
+        },
+        "B03": {
+          "agreement_rate": 0.49880895664602193,
+          "compared_steps": 6297,
+          "episodes": 200,
+          "success_rate": 0.865
+        },
+        "B04": {
+          "agreement_rate": 0.4617873028710069,
+          "compared_steps": 7419,
+          "episodes": 200,
+          "success_rate": 0.82
+        },
+        "B05": {
+          "agreement_rate": 0.5180972078593589,
+          "compared_steps": 6769,
+          "episodes": 200,
+          "success_rate": 0.85
+        }
+      }
+    },
+    "recovery_aggregation": {
+      "mean_agreement_rate": 0.6684196022299235,
+      "mean_success_rate": 0.8925000000000001,
+      "per_bundle": {
+        "B00": {
+          "agreement_rate": 0.6808887141171844,
+          "compared_steps": 5086,
+          "episodes": 200,
+          "success_rate": 0.915
+        },
+        "B01": {
+          "agreement_rate": 0.6732245681381958,
+          "compared_steps": 6252,
+          "episodes": 200,
+          "success_rate": 0.87
+        },
+        "B02": {
+          "agreement_rate": 0.6381031613976705,
+          "compared_steps": 6010,
+          "episodes": 200,
+          "success_rate": 0.88
+        },
+        "B03": {
+          "agreement_rate": 0.701864500646114,
+          "compared_steps": 5417,
+          "episodes": 200,
+          "success_rate": 0.91
+        },
+        "B04": {
+          "agreement_rate": 0.6965966690803765,
+          "compared_steps": 5524,
+          "episodes": 200,
+          "success_rate": 0.9
+        },
+        "B05": {
+          "agreement_rate": 0.61984,
+          "compared_steps": 6250,
+          "episodes": 200,
+          "success_rate": 0.88
+        }
+      }
+    }
+  },
+  "panels": {
+    "expert_agreement": {
+      "scenarios": 200,
+      "split": "expert_diagnostic"
+    },
+    "two_corruption": {
+      "scenarios": 200,
+      "split": "difficulty_shift"
+    }
+  },
+  "status": "EXPLORATORY, not prespecified, opened after the confirmatory result",
+  "two_corruption": {
+    "paired_recovery_minus_extra": {
+      "interval": {
+        "level": 0.95,
+        "lower": 0.08187210975919676,
+        "mean": 0.12000000000000001,
+        "method": "paired_t",
+        "upper": 0.15812789024080326
+      },
+      "per_bundle_deltas": {
+        "B00": 0.12,
+        "B01": 0.15000000000000002,
+        "B02": 0.09499999999999997,
+        "B03": 0.06500000000000006,
+        "B04": 0.16500000000000004,
+        "B05": 0.125
+      },
+      "status": "EXPLORATORY, not prespecified, opened after the confirmatory result"
+    },
+    "per_arm": {
+      "bc_base": {
+        "mean_success_rate": 0.6991666666666667,
+        "per_bundle": {
+          "B00": {
+            "assigned": 200,
+            "both_delivered": 179,
+            "success_rate": 0.725
+          },
+          "B01": {
+            "assigned": 200,
+            "both_delivered": 176,
+            "success_rate": 0.62
+          },
+          "B02": {
+            "assigned": 200,
+            "both_delivered": 177,
+            "success_rate": 0.645
+          },
+          "B03": {
+            "assigned": 200,
+            "both_delivered": 176,
+            "success_rate": 0.74
+          },
+          "B04": {
+            "assigned": 200,
+            "both_delivered": 176,
+            "success_rate": 0.64
+          },
+          "B05": {
+            "assigned": 200,
+            "both_delivered": 174,
+            "success_rate": 0.825
+          }
+        }
+      },
+      "extra_demonstrations": {
+        "mean_success_rate": 0.7541666666666668,
+        "per_bundle": {
+          "B00": {
+            "assigned": 200,
+            "both_delivered": 179,
+            "success_rate": 0.77
+          },
+          "B01": {
+            "assigned": 200,
+            "both_delivered": 176,
+            "success_rate": 0.72
+          },
+          "B02": {
+            "assigned": 200,
+            "both_delivered": 174,
+            "success_rate": 0.76
+          },
+          "B03": {
+            "assigned": 200,
+            "both_delivered": 175,
+            "success_rate": 0.825
+          },
+          "B04": {
+            "assigned": 200,
+            "both_delivered": 176,
+            "success_rate": 0.69
+          },
+          "B05": {
+            "assigned": 200,
+            "both_delivered": 174,
+            "success_rate": 0.76
+          }
+        }
+      },
+      "recovery_aggregation": {
+        "mean_success_rate": 0.8741666666666666,
+        "per_bundle": {
+          "B00": {
+            "assigned": 200,
+            "both_delivered": 177,
+            "success_rate": 0.89
+          },
+          "B01": {
+            "assigned": 200,
+            "both_delivered": 174,
+            "success_rate": 0.87
+          },
+          "B02": {
+            "assigned": 200,
+            "both_delivered": 176,
+            "success_rate": 0.855
+          },
+          "B03": {
+            "assigned": 200,
+            "both_delivered": 175,
+            "success_rate": 0.89
+          },
+          "B04": {
+            "assigned": 200,
+            "both_delivered": 175,
+            "success_rate": 0.855
+          },
+          "B05": {
+            "assigned": 200,
+            "both_delivered": 175,
+            "success_rate": 0.885
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "fps": 5,
+  "items": [
+    {
+      "empirical": true,
+      "href": "media/expert_labels.mp4",
+      "id": "expert_labels",
+      "mission": "go to the purple ball",
+      "outcome": "success",
+      "poster": "media/posters/expert_labels.webp",
+      "selection_rule": "The first expert trajectory of lab 03, in seed order.",
+      "sha256": "5df6e40e8b335ca690305f4c39b93da35abe812fa5e52e511a2f34ce853ea561",
+      "steps": 18,
+      "trace": "media/trajectories/expert_labels.json"
+    },
+    {
+      "empirical": true,
+      "href": "media/random_wander.mp4",
+      "id": "random_wander",
+      "mission": "go to the purple ball",
+      "outcome": "failure",
+      "poster": "media/posters/random_wander.webp",
+      "selection_rule": "The same world as the expert clip, with the first random policy of lab 03.",
+      "sha256": "683ef6d7344d32d8c0d65511ecd93c7e0361fcba862fe4a0f4daec85a73e9372",
+      "steps": 144
+    },
+    {
+      "empirical": true,
+      "href": "media/aliasing_pair.mp4",
+      "id": "aliasing_pair",
+      "outcome": "identical observations, different oracle actions",
+      "poster": "media/posters/aliasing_pair.webp",
+      "selection_rule": "The earliest observation that repeats across two worlds while the oracle asks for different actions.",
+      "sha256": "011f4f5046be1a38d7df9b1b13133b1c7d900ddceacb0906c28c52719649511a"
+    },
+    {
+      "empirical": true,
+      "href": "media/imitation_contrast.mp4",
+      "id": "imitation_contrast",
+      "mission": "go to the purple box",
+      "outcome": "the memoryless policy stalls, the recurrent one reaches the goal",
+      "poster": "media/posters/imitation_contrast.webp",
+      "scenario_ordinal": 15,
+      "selection_rule": "The first held-out world of lab 04 that separates the two policies.",
+      "sha256": "d5194643d5a43a67b1ea7d8149be519608c98e8b5c6635e3a972ee45f093ea6d"
+    },
+    {
+      "corruption_time": 6,
+      "empirical": true,
+      "href": "media/recovery_contrast.mp4",
+      "id": "recovery_contrast",
+      "mission": "go to the green key",
+      "outcome": "the base policy stalls, the recovery policy reaches the goal",
+      "poster": "media/posters/recovery_contrast.webp",
+      "scenario_ordinal": 20,
+      "selection_rule": "The first unseen scenario where the corruption lands and the two policies part ways.",
+      "sha256": "abd79aa05b9edce82552ff42aa159bbdd0719524aa28522e1755109a248ba59b",
+      "trace": "media/trajectories/recovery_contrast.json"
+    },
+    {
+      "corruption_time": 6,
+      "empirical": true,
+      "href": "media/recovery_failure.mp4",
+      "id": "recovery_failure",
+      "mission": "go to the red ball",
+      "outcome": "the recovery policy runs out of steps",
+      "poster": "media/posters/recovery_failure.webp",
+      "scenario_ordinal": 3,
+      "selection_rule": "The first unseen scenario where the corruption lands and the recovery policy misses it too.",
+      "sha256": "b7adc5775a3cc36a4f19eaf8575028d6217c9da1daebf2e61a1c793b3624fc1f"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "trajectories": [
+    {
+      "href": "media/trajectories/expert_labels.json",
+      "id": "expert_labels",
+      "sha256": "a89799c96072f5fe6dc9153686453c9a5bebdbfaecdd91b37f29efe9ce554172"
+    },
+    {
+      "href": "media/trajectories/recovery_contrast.json",
+      "id": "recovery_contrast",
+      "sha256": "85c5fea504b72857f9ad74a5230471edc87588a49639d3f4990675711948ba7f"
+    }
+  ]
+}

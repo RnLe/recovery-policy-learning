@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>07 · Believing a number · Grounded Recovery</title>
+    <meta
+      name="description"
+      content="Intention-to-treat, matched budgets, paired replicates, and frozen protocols, with each measurement bias demonstrated with known ground truth."
+    />
+    <script type="module" src="/src/journey.ts"></script>
+  </head>
+  <body data-page="07-measurement">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="../../">Grounded Recovery</a>
+        <nav class="site-nav" aria-label="site">
+          <a href="../01-world/">The Journey</a>
+          <a href="../08-study/">The Study</a>
+          <a href="../../reproduce/">Reproduce</a>
+          <a href="../../reports/Recovery_Policy_Learning_Technical_Report.pdf"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.75 1.75h5.5l3 3v9.5h-8.5z"></path><path d="M9.25 1.75v3h3"></path></svg>Report %VITE_REPORT_META%</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap">
+        <article>
+          <p class="small muted" style="margin-top: var(--space-3)">
+            Chapter 07 of 08 · teaching experiments
+          </p>
+          <h1>Believing a number</h1>
+          <p class="prose" style="font-size: var(--size-2)">
+            The question is sharp by now. What remains is everything that
+            makes an answer <em>trustworthy</em>, and every piece of that
+            discipline exists because a specific, demonstrable bias would
+            otherwise creep in. This chapter demonstrates the biases.
+          </p>
+
+          <h2>Intention-to-treat</h2>
+          <p class="prose">
+            Analyze by what was <b>scheduled</b>, not by what happened. Every
+            perturbed evaluation episode has a scheduled corruption time;
+            sometimes the episode ends first and the corruption is never
+            delivered. Delivery depends on the policy's own behavior, a
+            post-treatment variable, so conditioning on it compares filtered,
+            non-comparable subsets. In a simulation built so the true effect
+            is <b data-stat="lab07.truth"></b> by construction, the ITT
+            estimator's bias is <b data-stat="lab07.itt-bias"></b> while the
+            delivered-only estimator is off by
+            <b data-stat="lab07.pp-bias"></b>, a bias the size of the effects
+            this field measures, produced by nothing but an innocent-looking
+            filter.
+          </p>
+          <figure class="exhibit">
+            <img
+              src="../../figures/lab07/itt_bias.svg"
+              alt="Two histograms of simulated estimates: the ITT distribution centered on the true effect, the per-protocol distribution shifted away from it."
+              width="525" height="291" loading="lazy"
+            />
+            <figcaption>
+              2,000 simulated replicates against a known truth (vertical
+              line).
+            </figcaption>
+          </figure>
+
+          <h2>Matched budgets</h2>
+          <p class="prose">
+            The study's currency is revealed oracle labels, and the match was
+            deliberately broken to see what happens: rerunning
+            <a href="../06-shift/">chapter 06</a>'s recovery arm with
+            <span data-stat="lab07.unmatched-budget"></span> labels (double
+            the budget) lands at
+            <span data-stat="lab07.unmatched-unseen"></span> against
+            <span data-stat="lab07.matched-recovery-unseen"></span> matched.
+            The feared inflation did <em>not</em> materialize; the base sits
+            near its headroom ceiling, so doubled supervision bought nothing
+            measurable in one replicate. That is the deeper point: an
+            unmatched design attributes to the <b>method</b> whatever the
+            extra <b>budget</b> did or did not do, and a small unfrozen run
+            cannot even tell you which way the confound cuts. Matching is a
+            design necessity for attribution, not an empirical convenience.
+          </p>
+          <figure class="exhibit exhibit--plain">
+            <img
+              src="../../figures/lab07/unmatched_confound.svg"
+              alt="Three bars: the matched extra and recovery arms, and the double-budget recovery arm."
+              width="505" height="288" loading="lazy"
+            />
+            <figcaption>
+              The unmatched design, run for comparison.
+            </figcaption>
+          </figure>
+
+          <h2>Paired replicates</h2>
+          <p class="prose">
+            Every pipeline replicate re-rolls collection and training,
+            shifting both arms together; analyzing per-replicate
+            <em>differences</em> cancels that shared noise. In simulation at
+            six replicates, the paired analysis detects a five-point gap with
+            <b data-stat="lab07.paired-power"></b> power against
+            <b data-stat="lab07.unpaired-power"></b> unpaired. The entire
+            reason the study runs six bundles and reports a paired interval.
+          </p>
+          <figure class="exhibit exhibit--plain">
+            <img
+              src="../../figures/lab07/paired_power.svg"
+              alt="Histograms of interval widths: paired intervals are much narrower than unpaired ones."
+              width="478" height="280" loading="lazy"
+            />
+            <figcaption>
+              Interval widths over 2,000 simulated replicates.
+            </figcaption>
+          </figure>
+
+          <h2>Frozen means mechanical</h2>
+          <p class="prose">
+            A frozen protocol is a set of mechanisms, not a promise: unresolved
+            design choices block confirmatory runs; the whole design hashes to
+            one canonical fingerprint; data files chain their hashes so a
+            quiet edit is caught at its exact row; the test set opens once,
+            against a receipt; and the interpretation of the final interval
+            was written down before the interval existed. Try the fingerprint
+            yourself:
+          </p>
+          <div data-component="hash-demo"></div>
+          <div
+            data-illustration="lifecycle-freeze"
+            data-title="The lifecycle and its one-way doors"
+            data-spec="DESIGN → PREFLIGHT → PILOT → FREEZE → FINAL TRAINING → TEST OPENED → REPORT as a timeline; annotate what becomes impossible after each door."
+          ></div>
+          <div
+            data-illustration="budget-flow"
+            data-title="Labels as a budgeted currency"
+            data-spec="The oracle as a mint; equal label budgets flowing to the two arms; the ledger recording every revealed label."
+          ></div>
+
+          <div class="callout callout--recap">
+            <h3>Summary</h3>
+            <p>
+              Four biases with names (selective delivery, unequal budgets,
+              shared-noise dilution, post-hoc interpretation) and the
+              mechanism that blocks each one. You can now audit the study's
+              every sentence.
+            </p>
+          </div>
+
+          <nav class="journey-nav" aria-label="chapters">
+            <a href="../06-shift/"
+              ><span class="dir">‹ Back</span>When copying breaks</a
+            >
+            <a href="../08-study/" style="text-align: right"
+              ><span class="dir">Next ›</span>The Study</a
+            >
+          </nav>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <a href="https://github.com/rnle/recovery-policy-learning"
+          ><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>Source on GitHub</a
+        >
+        <span>Last updated %VITE_BUILD_DATE%</span>
+        <a href="../../reports/Recovery_Policy_Learning_Technical_Report.pdf"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.75 1.75h5.5l3 3v9.5h-8.5z"></path><path d="M9.25 1.75v3h3"></path></svg>Technical report</a>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+/* Design tokens. The palette follows the thesis style guide (StyleGuide.md):
+   steel blues and warm browns for chrome, sage green vs sky blue for the two
+   arms, stark orange for corruption. Method colors are fixed everywhere and
+   never the only differentiator. */
+
+:root {
+  /* surfaces and ink: dark steel text on warm paper, never pure black */
+  --paper: #faf9f5;
+  --paper-raised: #ffffff;
+  --paper-sunken: #f3eee2;
+  --ink: #4f5f6b;
+  --ink-strong: #3c4954;
+  --ink-soft: #6d7a85;
+  --ink-faint: #98a2ab;
+  --line: #e6ddc9;
+  --line-strong: #cbbfa4;
+  --link: #4d7b9e;
+
+  /* methods: the same pairing as every figure in the study */
+  --recovery: #6b8f71;
+  --recovery-strong: #57775c;
+  --recovery-soft: #e9efe9;
+  --extra: #4e9ae1;
+  --extra-strong: #3d7db9;
+  --extra-soft: #e7f0f9;
+  --base-method: #857255;
+  --base-soft: #efe9de;
+
+  /* status: "golden" corruption, thesis-severity red for failures */
+  --caution: #eba538;
+  --caution-strong: #b57a1a;
+  --caution-soft: #fbf0da;
+  --danger: #c0392b; /* integrity failures only */
+  --danger-soft: #f7e6e3;
+
+  /* value ramp: normalized 0 → 1, dark blue → light orange */
+  --value-0: #4f5f6b;
+  --value-1: #4d7b9e;
+  --value-2: #a5c6df;
+  --value-3: #f7f4e9;
+  --value-4: #e3b064;
+
+  /* type */
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, Menlo,
+    monospace;
+  --font-serif: Georgia, "Times New Roman", serif; /* math fallback */
+
+  --size-0: 0.75rem;
+  --size-1: 0.875rem;
+  --size-2: 0.9375rem;
+  --size-3: 1.1875rem;
+  --size-4: 1.5rem;
+  --size-5: 2rem;
+
+  /* rhythm */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.75rem;
+  --space-5: 3rem;
+  --space-6: 4rem;
+
+  --measure: 96ch;
+  --grid-max: 1280px;
+  --radius: 6px;
+  --radius-lg: 10px;
+}

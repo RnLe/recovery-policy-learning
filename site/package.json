@@ -1,0 +1,28 @@
+{
+  "name": "grounded-recovery-site",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "go": "node scripts/go.mjs",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "check": "node scripts/check-dist.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^26.3.0",
+    "jsdom": "^26.0.0",
+    "typescript": "^5.7.0",
+    "vite": "^7.0.0",
+    "vitest": "^3.2.0"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0"
+  }
+}

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>05 · The network · Grounded Recovery</title>
+    <meta
+      name="description"
+      content="Every layer of the policy network, a parameter-for-parameter reimplementation check, and an ablation read with honest eyes."
+    />
+    <script type="module" src="/src/journey.ts"></script>
+  </head>
+  <body data-page="05-architecture">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="../../">Grounded Recovery</a>
+        <nav class="site-nav" aria-label="site">
+          <a href="../01-world/">The Journey</a>
+          <a href="../08-study/">The Study</a>
+          <a href="../../reproduce/">Reproduce</a>
+          <a href="../../reports/Recovery_Policy_Learning_Technical_Report.pdf"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.75 1.75h5.5l3 3v9.5h-8.5z"></path><path d="M9.25 1.75v3h3"></path></svg>Report %VITE_REPORT_META%</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap">
+        <article>
+          <p class="small muted" style="margin-top: var(--space-3)">
+            Chapter 05 of 08 · teaching experiments
+          </p>
+          <h1>The network, piece by piece</h1>
+          <p class="prose" style="font-size: var(--size-2)">
+            The whole policy is
+            <b><span data-stat="lab05.parameters"></span> parameters</b>,
+            small enough to hold in one head, and audited three ways: a
+            walkthrough generated from a live instance, a from-scratch
+            reimplementation checked parameter-for-parameter against the
+            original, and an ablation in which the data judges each design
+            choice.
+          </p>
+
+          <h2>The shape of it</h2>
+          <p class="prose">
+            Three embedding tables turn the symbolic observation's
+            object/color/state indices into vectors; the observation is
+            symbolic (<a href="../01-world/">chapter 01</a>), so embeddings
+            replace the pixel stacks a visual task would need. Two 3×3
+            convolutions and a projection summarize the view; a small GRU
+            reads the mission once per episode; embeddings of the view
+            direction and the <em>previous executed action</em> complete the
+            inputs; a fusion layer mixes everything; a second GRU carries
+            memory across steps; a linear head emits three action logits.
+          </p>
+          <h2>Watch the real numbers flow</h2>
+          <p class="prose">
+            Below is the network itself, not a schematic. Every dot is one
+            actual value from a trained checkpoint, replayed on a real
+            episode: dark blue is that block's smallest value, light orange
+            its largest. Scrub through the steps, or press play to watch one
+            forward pass: the observation is unpacked into embeddings,
+            convolved down to a vector, joined with the mission and context,
+            and packed through the recurrent core into three logits.
+          </p>
+          <div data-network-flow="full_r0"></div>
+          <p class="prose">
+            The previous-action input deserves a sentence now: in clean runs
+            it is nearly redundant, but it is the <b>only channel</b> through
+            which an externally corrupted execution becomes visible to the
+            policy. Its purpose exists entirely in
+            <a href="../06-shift/">chapter 06</a>.
+          </p>
+
+          <h2>One component removed at a time</h2>
+          <p class="prose">
+            Five variants (the full model, no memory GRU, no mission input,
+            no previous-action input, and a bag-of-words mission encoder)
+            trained on identical demonstrations with an identical optimizer,
+            three seeds each:
+          </p>
+          <div data-component="ablation-bars"></div>
+
+          <div class="callout callout--honest">
+            <h3>How to read this</h3>
+            <p>
+              At this training scale, clean-condition ablations are a blunt
+              instrument: the variants land within a few points of each other
+              and the three-seed ranges overlap heavily. Two findings deserve
+              their own sentences. <b>Removing the mission costs nothing
+              here</b>: with one distractor and a long step limit, a
+              mission-blind policy that tours objects still ends on the right
+              one; the endpoint tolerates detours. And the bag-of-words
+              encoder matches the GRU at this five-word grammar. The
+              architecture is justified by <em>structural roles</em>: the
+              aliasing floor of <a href="../02-decision/">chapter 02</a> for
+              memory, the corruption channel for the previous action, the task
+              definition for the mission, not by ablation wins smaller than
+              seed noise. The same architecture trained under this chapter
+              and under <a href="../04-learning/">chapter 04</a> does not land
+              in the same place twice, which is exactly why the study runs six
+              paired replicates and reports an interval
+              (<a href="../07-measurement/">chapter 07</a>).
+            </p>
+          </div>
+
+          <h2>Why a GRU and not a Transformer</h2>
+          <p class="prose">
+            The dataset is a few thousand labelled steps; inference is
+            streamed one observation at a time with constant-size state; and
+            the model stays small enough to audit by hand, which this project
+            treats as a feature. Nothing here claims architectural novelty;
+            the network is the standard BabyAI treatment, dissected.
+          </p>
+
+          <div class="callout callout--recap">
+            <h3>Summary</h3>
+            <p>
+              Every module of the exact network the study trains, which
+              components carry structural weight, and a healthy distrust of
+              small-n ablation deltas. Now we can finally break things on
+              purpose.
+            </p>
+          </div>
+
+          <nav class="journey-nav" aria-label="chapters">
+            <a href="../04-learning/"
+              ><span class="dir">‹ Back</span>Two ways to learn</a
+            >
+            <a href="../06-shift/" style="text-align: right"
+              ><span class="dir">Next ›</span>When copying breaks</a
+            >
+          </nav>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <a href="https://github.com/rnle/recovery-policy-learning"
+          ><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>Source on GitHub</a
+        >
+        <span>Last updated %VITE_BUILD_DATE%</span>
+        <a href="../../reports/Recovery_Policy_Learning_Technical_Report.pdf"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.75 1.75h5.5l3 3v9.5h-8.5z"></path><path d="M9.25 1.75v3h3"></path></svg>Technical report</a>
+      </div>
+    </footer>
+  </body>
+</html>

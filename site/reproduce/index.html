@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reproduce · Grounded Recovery</title>
+    <meta
+      name="description"
+      content="Deterministic reproduction of the study, the foundations labs, the media, and this site."
+    />
+    <script type="module" src="/src/reproduce.ts"></script>
+  </head>
+  <body data-page="reproduce">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="../">Grounded Recovery</a>
+        <nav class="site-nav" aria-label="site">
+          <a href="../journey/01-world/">The Journey</a>
+          <a href="../journey/08-study/">The Study</a>
+          <a href="./">Reproduce</a>
+          <a href="../reports/Recovery_Policy_Learning_Technical_Report.pdf"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.75 1.75h5.5l3 3v9.5h-8.5z"></path><path d="M9.25 1.75v3h3"></path></svg>Report %VITE_REPORT_META%</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap">
+        <article>
+          <h1 style="margin-top: var(--space-4)">Reproduce everything</h1>
+          <p class="prose">
+            The pipeline is deterministic given the frozen contract: named
+            seeds derive with SHA-256 from
+            <code>(root_seed, bundle_id, component)</code>, training uses
+            deterministic kernels, and repeated runs reproduce model state
+            digests bit-for-bit on the pinned device.
+            <span data-stat="study.protocol"></span>; pins: Python 3.11,
+            torch 2.13.0, minigrid 3.1.0, gymnasium 1.3.0.
+          </p>
+
+          <h2>The confirmatory study</h2>
+          <pre><code>uv sync --frozen
+uv run gr smoke          --config configs/pilot.yaml
+uv run gr make-manifests --config configs/pilot.yaml
+uv run gr preflight      --config configs/pilot.yaml
+uv run gr freeze         --config configs/pilot.yaml
+for b in B00 B01 B02 B03 B04 B05; do
+  uv run gr run-bundle --contract configs/experiment_contract.yaml --bundle $b
+done
+uv run gr integrity      --contract configs/experiment_contract.yaml --phase preopen
+uv run gr evaluate-final --contract configs/experiment_contract.yaml
+uv run gr analyze        --contract configs/experiment_contract.yaml
+uv run gr audit          --contract configs/experiment_contract.yaml
+uv run grf study-extras
+uv run gr integrity      --contract configs/experiment_contract.yaml --phase release
+uv run gr media          --contract configs/experiment_contract.yaml
+uv run gr publish-result --contract configs/experiment_contract.yaml
+uv run gr export-typst   --contract configs/experiment_contract.yaml
+typst compile report/main.typ build/recovery-policy-learning-report.pdf</code></pre>
+          <p class="prose">
+            Prerequisites: <code>uv</code>, Typst 0.15.1, and a system
+            <code>ffmpeg</code> for the rollout animations. The report must be
+            compiled before staging, which requires the PDF.
+          </p>
+
+          <h2>The Journey chapters (foundations labs)</h2>
+          <pre><code>uv run grf run all        # seven labs; figures, tables, mini-reports
+uv run grf media          # rollout videos + scrubber trajectories
+uv run grf network-trace  # real weights/activations for the network view
+uv run pytest -m "not slow"</code></pre>
+
+          <h2>This site</h2>
+          <pre><code>uv run grf stage-site     # copies evidence into site/public, writes hashes
+uv run grf verify-staging # re-hash everything staged
+cd site &amp;&amp; npm ci &amp;&amp; npm test &amp;&amp; npm run build -- --base "/recovery-policy-learning/"</code></pre>
+          <p class="prose">
+            <code>site/public</code> is written only by the staging command;
+            <code>staging-manifest.json</code> records a SHA-256 and source for
+            every staged file. The one exception is
+            <code>site/public/illustrations/</code>, which holds hand-drawn
+            figures and is never touched by staging.
+          </p>
+
+          <h2>Provenance notes</h2>
+          <p class="prose">
+            The code fingerprint recorded in
+            <code>configs/freeze_record.json</code> identifies the source tree
+            that produced the confirmatory result. Everything added after the
+            test opening is non-scientific: the rollout-media generator, the
+            foundations package, the descriptive audits, the two exploratory
+            panels, and this site. No frozen protocol value, manifest,
+            checkpoint, or result artifact was modified. The shipped tree
+            therefore does not reproduce the freeze-time fingerprint, and what
+            verifies the result is not a fingerprint match but the
+            release-phase integrity command re-deriving the published summary
+            from the raw evaluation rows. Full details in the
+            <a href="../reports/Recovery_Policy_Learning_Technical_Report.pdf"
+              >report's reproduction chapter</a
+            >.
+          </p>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <a href="https://github.com/rnle/recovery-policy-learning"
+          ><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>Source on GitHub</a
+        >
+        <span>Last updated %VITE_BUILD_DATE%</span>
+        <a href="../reports/Recovery_Policy_Learning_Technical_Report.pdf"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.75 1.75h5.5l3 3v9.5h-8.5z"></path><path d="M9.25 1.75v3h3"></path></svg>Technical report</a>
+      </div>
+    </footer>
+  </body>
+</html>

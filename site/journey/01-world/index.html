@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>01 · The world · Grounded Recovery</title>
+    <meta
+      name="description"
+      content="What BabyAI is: the maze, the mission, the frozen actions, and the 7×7 symbolic window that is all the agent ever sees."
+    />
+    <script type="module" src="/src/journey.ts"></script>
+  </head>
+  <body data-page="01-world">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="../../">Grounded Recovery</a>
+        <nav class="site-nav" aria-label="site">
+          <a href="./">The Journey</a>
+          <a href="../08-study/">The Study</a>
+          <a href="../../reproduce/">Reproduce</a>
+          <a href="../../reports/Recovery_Policy_Learning_Technical_Report.pdf"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.75 1.75h5.5l3 3v9.5h-8.5z"></path><path d="M9.25 1.75v3h3"></path></svg>Report %VITE_REPORT_META%</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap">
+        <article>
+          <p class="small muted" style="margin-top: var(--space-3)">
+            Chapter 01 of 08 · teaching experiments; the confirmatory
+            evidence lives in <a href="../08-study/">chapter 08</a>
+          </p>
+          <h1>The world: a maze, a mission, a window</h1>
+          <p class="prose" style="font-size: var(--size-2)">
+            Before anything can be learned, there must be a world to act in.
+            Ours is deliberately austere, because every later claim about learning,
+            failure, and recovery can be checked by looking at it directly.
+          </p>
+          <div class="callout">
+            <p class="small">
+              My goal was to understand this topic deeply. Building the
+              visualizations is what made the ideas concrete for me, and
+              explaining each one in my own words pushed that understanding
+              further still. That is why The Journey exists: it is the path I
+              took, written out, one chapter at a time.
+            </p>
+          </div>
+
+          <h2>A fresh maze every time</h2>
+          <p class="prose">
+            The environment is <code data-stat="env.id"></code> from the
+            BabyAI/MiniGrid family: each reset seed generates a new maze of
+            connected rooms on a <span data-stat="env.grid"></span>-cell grid,
+            scatters a few colored objects, and issues a one-line instruction
+            like <em>“go to the grey box”</em>. The episode succeeds when the
+            agent stands next to the requested object facing it, and ends
+            unsuccessfully after <span data-stat="env.max-steps"></span> steps.
+            Across <span data-stat="lab01.census"></span> generated worlds we
+            counted <span data-stat="lab01.missions"></span> distinct missions
+            across six colors and three object kinds, one grammar.
+          </p>
+          <figure class="exhibit">
+            <video data-media="expert_labels" width="640" height="780"></video>
+            <figcaption>
+              A full episode, solved by the scripted expert of
+              <a href="../03-oracle/">chapter 03</a>. Every step of it already
+              carries the kind of label this study spends its budget on.
+              <span data-media-caption></span>
+            </figcaption>
+          </figure>
+
+          <h2>What the agent actually sees</h2>
+          <p class="prose">
+            Not the maze. The observation is a symbolic
+            <b>7×7×3 integer tensor</b>: an egocentric, occlusion-aware crop
+            of the cells in front of the agent, plus a view direction (0–3)
+            and the mission string. The three channels are lookup indices
+            (object kind, color, door state), not pixels; walls block sight,
+            so much of a typical view is the “unseen” symbol.
+          </p>
+          <figure class="exhibit">
+            <img
+              src="../../figures/lab01/observation_anatomy.svg"
+              alt="Left: the rendered maze. Right: the three integer planes of one observation, with occluded cells marked as unseen."
+              width="853" height="248" loading="lazy"
+            />
+            <figcaption>
+              One observation, dissected. The left panel is a rendering for
+              humans; the policy receives only the three planes.
+            </figcaption>
+          </figure>
+
+          <h2>Step through it yourself</h2>
+          <p class="prose">
+            The scrubber below replays the expert episode from above, drawn
+            directly from the symbolic data the models consume. The bright
+            cone on the maze is the field of view; the right pane is the
+            actual network input at that step.
+          </p>
+          <div data-scrubber="expert_labels"></div>
+
+          <h2>What the agent can do</h2>
+          <p class="prose">
+            Three actions, <code data-stat="env.actions"></code>, out of
+            MiniGrid's seven. Turning rotates the view in place;
+            <code>forward</code> advances one cell when nothing blocks it. Why
+            the other four are excluded, and why this set must stay
+            <em>frozen</em>, becomes clear when corruptions arrive in
+            <a href="../06-shift/">chapter 06</a>.
+          </p>
+          <figure class="exhibit">
+            <img
+              src="../../figures/lab01/action_effects.svg"
+              alt="Four panels: a start state, and the world after left, right, and forward."
+              width="818" height="248" loading="lazy"
+            />
+            <figcaption>
+              The frozen action set, applied from one start state.
+            </figcaption>
+          </figure>
+
+          <h2 id="difficulty">And a first taste of difficulty</h2>
+          <p class="prose">
+            The same world as the expert video, driven by uniformly random
+            actions. Random wandering succeeds surprisingly often across many
+            worlds (<span data-stat="lab03.random"></span>, measured honestly
+            in <a href="../03-oracle/">chapter 03</a>) but takes
+            <span data-stat="lab03.random-steps"></span> on average, against
+            the expert's <span data-stat="lab03.oracle-steps"></span>.
+          </p>
+          <figure class="exhibit">
+            <video data-media="random_wander" width="640" height="780"></video>
+            <figcaption>
+              <span data-media-caption></span>
+            </figcaption>
+          </figure>
+
+          <div class="callout callout--recap">
+            <h3>Summary</h3>
+            <p>
+              The world is a procedurally generated maze; the agent sees a
+              7×7 symbolic crop plus a mission string, and acts with three
+              frozen movement actions. The gap between the world's state and
+              that little window is the subject of the next chapter.
+            </p>
+          </div>
+
+          <nav class="journey-nav" aria-label="chapters">
+            <a href="../../"><span class="dir">‹ Back</span>Overview</a>
+            <a href="../02-decision/" style="text-align: right"
+              ><span class="dir">Next ›</span>Seeing less than there is</a
+            >
+          </nav>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <a href="https://github.com/rnle/recovery-policy-learning"
+          ><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>Source on GitHub</a
+        >
+        <span>Last updated %VITE_BUILD_DATE%</span>
+        <a href="../../reports/Recovery_Policy_Learning_Technical_Report.pdf"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.75 1.75h5.5l3 3v9.5h-8.5z"></path><path d="M9.25 1.75v3h3"></path></svg>Technical report</a>
+      </div>
+    </footer>
+  </body>
+</html>

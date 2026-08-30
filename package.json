@@ -1,0 +1,10 @@
+{
+  "name": "recovery-policy-learning",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "go": "node site/scripts/go.mjs"
+  }
+}

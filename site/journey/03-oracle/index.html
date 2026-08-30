@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>03 · The teacher · Grounded Recovery</title>
+    <meta
+      name="description"
+      content="Policies from random to scripted oracle, a falsification attempt on the oracle's bookkeeping, and what an expert label literally is."
+    />
+    <script type="module" src="/src/journey.ts"></script>
+  </head>
+  <body data-page="03-oracle">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="../../">Grounded Recovery</a>
+        <nav class="site-nav" aria-label="site">
+          <a href="../01-world/">The Journey</a>
+          <a href="../08-study/">The Study</a>
+          <a href="../../reproduce/">Reproduce</a>
+          <a href="../../reports/Recovery_Policy_Learning_Technical_Report.pdf"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.75 1.75h5.5l3 3v9.5h-8.5z"></path><path d="M9.25 1.75v3h3"></path></svg>Report %VITE_REPORT_META%</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap">
+        <article>
+          <p class="small muted" style="margin-top: var(--space-3)">
+            Chapter 03 of 08 · teaching experiments
+          </p>
+          <h1>The teacher, and where labels come from</h1>
+          <p class="prose" style="font-size: var(--size-2)">
+            A <b>policy</b> is any rule from observations to actions. Before
+            learning one, it pays to measure how far non-learned rules get,
+            and to meet the teacher whose answers this study spends as
+            currency.
+          </p>
+
+          <h2>The policy spectrum, measured</h2>
+          <p class="prose">
+            Three policies, identical scenarios. A uniformly random policy
+            succeeds in <span data-stat="lab03.random"></span> of episodes,
+            more than expected: the maze is small and
+            <span data-stat="env.max-steps"></span> steps is a long time, so
+            blind wandering does stumble onto the target, hopelessly
+            inefficiently. A hand-written wall follower reaches
+            <span data-stat="lab03.wall"></span>. The scripted oracle solves
+            <span data-stat="lab03.oracle"></span> in
+            <span data-stat="lab03.oracle-steps"></span> on average.
+          </p>
+          <div data-component="spectrum-bars"></div>
+
+          <h2>What the oracle is</h2>
+          <p class="prose">
+            <code>BabyAIBot</code>, shipped with MiniGrid, is a scripted
+            planner with <b>privileged access</b>: it reads the full grid,
+            the true state that <a href="../02-decision/">chapter 02</a>
+            proved the agent never observes, and replans from a subgoal stack
+            at every step. It is not learned, and it never acts at evaluation
+            time. It exists to answer one question at any visited state:
+            <em>what should be done here?</em> That answer is an
+            <b>expert label</b>. A demonstration is nothing more than a
+            sequence of such labels along the expert's own path, exactly what
+            the video and scrubber in <a href="../01-world/">chapter 01</a>
+            showed.
+          </p>
+          <div
+            data-illustration="oracle-privilege"
+            data-title="Privileged teacher, partially observing student"
+            data-spec="The oracle reading the whole grid vs. the policy behind its 7×7 window; a labelled arrow from oracle answers into the training dataset."
+          ></div>
+
+          <h2>Trying to break the teacher</h2>
+          <p class="prose">
+            The bot tracks the world by being told which action was executed.
+            Two questions, measured on
+            <span data-stat="lab03.sync-pairs"></span> identical scenarios with
+            one forced off-plan action each. First, the fact the whole study
+            rests on: an honestly informed oracle <b>recovers</b>,
+            <span data-stat="lab03.recovery-rate"></span> success after the
+            with the deviation, which is what lets it label states a learner reaches
+            instead of the expert. Second, a falsification attempt: lying to
+            it, never informing it, double-calling its planner. Nothing broke.
+          </p>
+          <figure class="exhibit">
+            <img
+              src="../../figures/lab03/synchronization_experiment.svg"
+              alt="Four bars, all at 100%: the honest protocol and three misuse protocols."
+              width="768" height="285" loading="lazy"
+            />
+            <figcaption>
+              The falsification attempt. The bot replans from the live world
+              state, and pure navigation barely uses the bookkeeping, so on
+              this task the synchronization contract earns its keep as
+              <em>accounting</em> rigor: a query is the budgeted unit of
+              supervision. The result is a null, and it is reported as one.
+            </figcaption>
+          </figure>
+
+          <h2>One demonstration, frame by frame</h2>
+          <figure class="exhibit">
+            <img
+              src="../../figures/lab03/labelled_trajectory.svg"
+              alt="Six frames of one expert episode, each captioned with the oracle's action, ending in success."
+              width="653" height="570" loading="lazy"
+            />
+            <figcaption>
+              One expert demonstration as the learner will consume it: a
+              sequence of (observation, label) pairs.
+            </figcaption>
+          </figure>
+
+          <div class="callout callout--recap">
+            <h3>Summary</h3>
+            <p>
+              The task is hard for hand-written rules and trivial for a
+              privileged planner; a <em>label</em> is one oracle query at one
+              visited state; and the oracle stays competent even after the
+              agent deviates, which is the door recovery training will walk
+              through in <a href="../06-shift/">chapter 06</a>.
+            </p>
+          </div>
+
+          <nav class="journey-nav" aria-label="chapters">
+            <a href="../02-decision/"
+              ><span class="dir">‹ Back</span>Seeing less than there is</a
+            >
+            <a href="../04-learning/" style="text-align: right"
+              ><span class="dir">Next ›</span>Two ways to learn</a
+            >
+          </nav>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <a href="https://github.com/rnle/recovery-policy-learning"
+          ><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>Source on GitHub</a
+        >
+        <span>Last updated %VITE_BUILD_DATE%</span>
+        <a href="../../reports/Recovery_Policy_Learning_Technical_Report.pdf"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.75 1.75h5.5l3 3v9.5h-8.5z"></path><path d="M9.25 1.75v3h3"></path></svg>Technical report</a>
+      </div>
+    </footer>
+  </body>
+</html>

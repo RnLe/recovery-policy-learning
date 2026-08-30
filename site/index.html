@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Grounded Recovery · recovery labels vs. extra demonstrations</title>
+    <meta
+      name="description"
+      content="A controlled imitation-learning study: under equal label budgets, is it better to label the states a learner actually reaches after a mistake, or to collect more expert demonstrations?"
+    />
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="./">Grounded Recovery</a>
+        <nav class="site-nav" aria-label="site">
+          <a href="journey/01-world/">The Journey</a>
+          <a href="journey/08-study/">The Study</a>
+          <a href="reproduce/">Reproduce</a>
+          <a href="reports/Recovery_Policy_Learning_Technical_Report.pdf"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.75 1.75h5.5l3 3v9.5h-8.5z"></path><path d="M9.25 1.75v3h3"></path></svg>Report %VITE_REPORT_META%</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap">
+        <section aria-labelledby="hero-heading">
+          <h1 id="hero-heading" style="margin-top: var(--space-4)">
+            When a policy makes a mistake, whose states deserve the labels?
+          </h1>
+          <p class="prose" style="font-size: var(--size-3); line-height: 1.5">
+            A behavior-cloned policy is trained on an expert's states but
+            deployed on its own. Given a fixed budget of additional expert
+            labels, this study asks one controlled question: spend them on
+            <b style="color: var(--extra)">more demonstrations</b>, or on the
+            <b style="color: var(--recovery)">states the learner actually
+            visits after an error</b>?
+          </p>
+          <div data-component="drift-story" data-story-variant="hero"></div>
+        </section>
+
+        <section aria-labelledby="result-heading">
+          <h2 id="result-heading">The result</h2>
+          <div class="result-lead">
+            <div class="result-lead__text">
+              <h3>One scenario, both answers</h3>
+              <p>
+                The same held-out world, the same never-trained-on corruption
+                at the same moment. The policy trained with extra
+                demonstrations never recovers; the policy trained on recovery
+                labels walks to the goal.
+              </p>
+              <p class="small muted">
+                Both arms meet the same unseen corruption at the same moment,
+                the amber flash. This is the first unseen scenario where the
+                two arms part ways; <a href="journey/08-study/">The Study</a>
+                shows the losses as well. The left pane stops two seconds
+                after the policy stops moving, while the episode itself runs
+                on to the step limit.
+              </p>
+            </div>
+            <figure class="exhibit result-lead__media">
+              <video data-media="unseen_paired_contrast" width="1288" height="754"></video>
+            </figure>
+          </div>
+          <div data-component="result-panel"></div>
+          <div data-component="paired-effect"></div>
+        </section>
+
+        <section aria-labelledby="fair-heading">
+          <h2 id="fair-heading">What is held equal</h2>
+          <p class="prose">
+            The comparison is only meaningful because everything except the
+            <em>origin of the labels</em> is matched.
+          </p>
+          <div data-component="three-arm"></div>
+          <div class="stat-strip">
+            <div class="stat">
+              <b data-stat="study.budget"></b>
+              <span>additional labels per arm, exactly equal</span>
+            </div>
+            <div class="stat">
+              <b data-stat="study.eligible"></b>
+              <span>frozen unseen scenarios, every arm, every bundle</span>
+            </div>
+            <div class="stat">
+              <b data-stat="study.bundles"></b>
+              <span>independent pipeline replicates, analyzed paired</span>
+            </div>
+            <div class="stat">
+              <b data-stat="study.sesoi"></b>
+              <span>smallest effect of interest, fixed before any data</span>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="journey-heading">
+          <h2 id="journey-heading">The Journey, from zero to this result</h2>
+          <p class="prose">
+            My goal here was to understand this topic deeply. Building the
+            visualizations is what made the ideas concrete for me, and
+            explaining each one in my own words pushed that understanding
+            further still. That is why The Journey exists: it is the path I
+            took, written out.
+          </p>
+          <p class="prose">
+            Every ingredient of the experiment is built from scratch in eight
+            short chapters, each backed by its own small, deterministic,
+            tested experiments. You can start with no machine-learning
+            background and audit everything above by the end.
+          </p>
+          <div class="chapter-grid">
+            <a class="chapter-card" href="journey/01-world/">
+              <span class="kicker">01</span><b>The world</b>
+              <p>A maze, a mission, and a 7×7 window: what the agent can see
+                and do.</p>
+            </a>
+            <a class="chapter-card" href="journey/02-decision/">
+              <span class="kicker">02</span><b>Seeing less than there is</b>
+              <p>Why partial observability is the problem class, with measured
+                proof that no memoryless policy suffices.</p>
+            </a>
+            <a class="chapter-card" href="journey/03-oracle/">
+              <span class="kicker">03</span><b>The teacher</b>
+              <p>Scripted oracles, a falsification attempt, and what an
+                “expert label” literally is.</p>
+            </a>
+            <a class="chapter-card" href="journey/04-learning/">
+              <span class="kicker">04</span><b>Two ways to learn</b>
+              <p>Real reinforcement learning on a toy task; why this study is
+                imitation instead, and the first cloned policies.</p>
+            </a>
+            <a class="chapter-card" href="journey/05-architecture/">
+              <span class="kicker">05</span><b>The network</b>
+              <p>Every layer of the policy, and an ablation read with honest
+                eyes.</p>
+            </a>
+            <a class="chapter-card" href="journey/06-shift/">
+              <span class="kicker">06</span><b>When copying breaks</b>
+              <p>Compounding errors, corruption operators, and recovery labels:
+                the study in miniature.</p>
+            </a>
+            <a class="chapter-card" href="journey/07-measurement/">
+              <span class="kicker">07</span><b>Believing a number</b>
+              <p>Intention-to-treat, matched budgets, paired replicates, and
+                frozen protocols, each bias demonstrated live.</p>
+            </a>
+            <a class="chapter-card" href="journey/08-study/">
+              <span class="kicker">08</span><b>The Study</b>
+              <p>The frozen experiment assembled from all of the above, and
+                its result.</p>
+            </a>
+          </div>
+        </section>
+
+        <section aria-labelledby="scope-heading">
+          <h2 id="scope-heading">What this does not establish</h2>
+          <p class="prose">
+            The evidence is in silico, symbolic, discrete, and
+            oracle-supervised: a grid world with a scripted teacher and greedy
+            discrete control. The treatment is
+            <b>DAgger-style recovery-state aggregation</b>: masked behavioral
+            cloning, not reinforcement learning, with no physical robot, no
+            human teachers, and no pretrained models. “Unseen” means the one
+            other derangement of a three-action set with disjoint corruption
+            times, not an open-world corruption family. Real robotics would
+            additionally demand continuous control, imperfect perception, and
+            safety constraints that this study deliberately excludes.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <a href="https://github.com/rnle/recovery-policy-learning"
+          ><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>Source on GitHub</a
+        >
+        <span>Last updated %VITE_BUILD_DATE%</span>
+        <a href="reports/Recovery_Policy_Learning_Technical_Report.pdf"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.75 1.75h5.5l3 3v9.5h-8.5z"></path><path d="M9.25 1.75v3h3"></path></svg>Technical report</a>
+      </div>
+    </footer>
+  </body>
+</html>

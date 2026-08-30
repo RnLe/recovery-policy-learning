@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>06 · When copying breaks · Grounded Recovery</title>
+    <meta
+      name="description"
+      content="Compounding errors made visible, the corruption operators derived, and the study's remedy comparison previewed at small scale."
+    />
+    <script type="module" src="/src/journey.ts"></script>
+  </head>
+  <body data-page="06-shift">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="../../">Grounded Recovery</a>
+        <nav class="site-nav" aria-label="site">
+          <a href="../01-world/">The Journey</a>
+          <a href="../08-study/">The Study</a>
+          <a href="../../reproduce/">Reproduce</a>
+          <a href="../../reports/Recovery_Policy_Learning_Technical_Report.pdf"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.75 1.75h5.5l3 3v9.5h-8.5z"></path><path d="M9.25 1.75v3h3"></path></svg>Report %VITE_REPORT_META%</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap">
+        <article>
+          <p class="small muted" style="margin-top: var(--space-3)">
+            Chapter 06 of 08 · teaching experiments
+          </p>
+          <h1>When copying breaks</h1>
+          <p class="prose" style="font-size: var(--size-2)">
+            Behavior cloning trains on the expert's states and deploys on its
+            own. The first wrong action leads somewhere the demonstrations
+            never covered, and whatever happens there is unsupervised. This
+            chapter makes that spiral measurable, then previews the study's
+            remedy comparison in miniature.
+          </p>
+
+          <h2>The failure mode, sketched and then measured</h2>
+          <div data-component="drift-story" data-story-variant="chapter"></div>
+          <p class="prose">
+            Ross and Bagnell's classical analysis says a per-step error rate
+            <span class="math">ε</span> can cost on the order of
+            <span class="math">ε·T<sup class="rm">2</sup></span> over a
+            horizon <span class="math">T</span>, precisely because mistakes
+            change the state distribution. Here is that argument as data: one
+            corrupted executed action, and the drift it causes.
+          </p>
+          <figure class="exhibit">
+            <img
+              src="../../figures/lab06/shift_anatomy.svg"
+              alt="Left: success drops when one action is corrupted, more for later corruption times. Right: corrupted rollouts drift about twice as far from the expert path as clean ones."
+              width="851" height="283" loading="lazy"
+            />
+            <figcaption>
+              Left: one corrupted action costs real success (delivered
+              episodes, by corruption time). Right: distance to the expert's
+              route after the corruption; clean rollouts drift slowly
+              (alternative valid paths), corrupted ones roughly twice as far.
+            </figcaption>
+          </figure>
+
+          <h2>Corruption operators, and why the action set is frozen</h2>
+          <p class="prose">
+            A corruption must change every action it touches, otherwise some
+            corruptions would be no-ops. An operator is therefore a
+            <b>derangement</b> (a fixed-point-free shuffle) of the action set,
+            and for three actions <em>exactly two exist</em>, the two cycles,
+            each the other's inverse. The study uses one during recovery
+            collection and holds the other out as the <b>unseen</b> operator.
+            Change the action set and this whole operator family changes with
+            it; enlarge it and the oracle starts recommending actions outside
+            the set (with closed doors the bot emits <code>toggle</code>,
+            the pilot discovery that fixed <code>doors_open: true</code> in
+            the contract). That is why the action set is a frozen contract
+            field, not a tuning knob.
+          </p>
+
+          <h2>Two remedies, one budget</h2>
+          <p class="prose">
+            Both remedies start from the <em>same</em> trained base policy
+            and receive exactly
+            <b><span data-stat="lab06.budget"></span> additional oracle
+            labels</b>. The <b style="color: var(--extra)">extra arm</b>
+            spends them on fresh demonstrations. The
+            <b style="color: var(--recovery)">recovery arm</b> spends them
+            where the learner actually goes: roll the base policy out, corrupt
+            one action, and let the still-synchronized oracle label the next
+            few states the policy visits.
+          </p>
+          <div
+            data-illustration="recovery-collection"
+            data-title="How recovery labels are collected"
+            data-spec="A rollout timeline: the learner's own actions, the corruption at t*, and the oracle labelling the H-window states after it. Contrast with a demonstration timeline where every state is expert-visited."
+          ></div>
+          <p class="prose">
+            One fairness leak is deliberately left open here and
+            <em>measured</em>: an extra-demo batch carries
+            <span data-stat="lab06.exposure-extra"></span> new labels per
+            update against <span data-stat="lab06.exposure-recovery"></span>
+            for sparse recovery windows. The study closes exactly this leak
+            with one-target-per-window training items,
+            <a href="../07-measurement/">chapter 07</a> explains why that
+            matters.
+          </p>
+
+          <h2>The mini-study</h2>
+          <div data-component="mini-arms-bars"></div>
+          <figure class="exhibit">
+            <video data-media="recovery_contrast" width="1292" height="780"></video>
+            <figcaption>
+              The base policy and the recovery-trained policy, identical
+              world, identical unseen-operator corruption.
+              <span data-media-caption></span>
+            </figcaption>
+          </figure>
+          <p class="prose">
+            Step through the recovery policy's episode yourself; the amber
+            frame marks the corrupted execution; watch the previous-action
+            channel's purpose become visible:
+          </p>
+          <div data-scrubber="recovery_contrast"></div>
+          <figure class="exhibit">
+            <video data-media="recovery_failure" width="640" height="780"></video>
+            <figcaption>
+              A scenario where the recovery-trained policy fails anyway.
+              The losses belong here as much as the wins.
+              <span data-media-caption></span>
+            </figcaption>
+          </figure>
+
+          <div class="callout callout--honest">
+            <h3>How to read the mini-study</h3>
+            <p>
+              Three replicates, and the per-replicate recovery-minus-extra
+              differences on the unseen slice are
+              <b data-stat="lab06.deltas"></b>, and the sign is not even fixed at
+              this scale. Two reasons, both instructive: a single corruption
+              dents this strong base policy by only
+              <span data-stat="lab06.base-clean"></span> →
+              <span data-stat="lab06.base-matched"></span> on the matched
+              slice (little headroom for any remedy), and small unfrozen runs
+              simply cannot answer this question. Turning those two lessons
+              into design requirements is the next chapter; the confirmatory
+              answer is <a href="../08-study/">the study</a>.
+            </p>
+          </div>
+
+          <div class="callout callout--recap">
+            <h3>Summary</h3>
+            <p>
+              Why cloned policies fail under their own mistakes, what a
+              corruption operator is and why the action set is frozen, what
+              recovery labels are, and why a three-replicate preview settles
+              nothing. Everything now hinges on measuring honestly.
+            </p>
+          </div>
+
+          <nav class="journey-nav" aria-label="chapters">
+            <a href="../05-architecture/"
+              ><span class="dir">‹ Back</span>The network</a
+            >
+            <a href="../07-measurement/" style="text-align: right"
+              ><span class="dir">Next ›</span>Believing a number</a
+            >
+          </nav>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <a href="https://github.com/rnle/recovery-policy-learning"
+          ><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>Source on GitHub</a
+        >
+        <span>Last updated %VITE_BUILD_DATE%</span>
+        <a href="../../reports/Recovery_Policy_Learning_Technical_Report.pdf"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.75 1.75h5.5l3 3v9.5h-8.5z"></path><path d="M9.25 1.75v3h3"></path></svg>Technical report</a>
+      </div>
+    </footer>
+  </body>
+</html>

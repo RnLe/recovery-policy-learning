@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>02 · Seeing less than there is · Grounded Recovery</title>
+    <meta
+      name="description"
+      content="From MDP to POMDP: what partial observability means, and measured proof that no memoryless policy can act optimally here."
+    />
+    <script type="module" src="/src/journey.ts"></script>
+  </head>
+  <body data-page="02-decision">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="../../">Grounded Recovery</a>
+        <nav class="site-nav" aria-label="site">
+          <a href="../01-world/">The Journey</a>
+          <a href="../08-study/">The Study</a>
+          <a href="../../reproduce/">Reproduce</a>
+          <a href="../../reports/Recovery_Policy_Learning_Technical_Report.pdf"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.75 1.75h5.5l3 3v9.5h-8.5z"></path><path d="M9.25 1.75v3h3"></path></svg>Report %VITE_REPORT_META%</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap">
+        <article>
+          <p class="small muted" style="margin-top: var(--space-3)">
+            Chapter 02 of 08 · teaching experiments
+          </p>
+          <h1>Seeing less than there is</h1>
+          <p class="prose" style="font-size: var(--size-2)">
+            A decision process is the minimal mathematics of acting over time.
+            The one distinction that shapes this whole study is whether the
+            agent gets to see where it actually is.
+          </p>
+
+          <h2>The formal object, in six symbols</h2>
+          <p class="prose">
+            A <b>Markov decision process</b> is a tuple
+            <span class="math">(S, A, T, R)</span>: states, actions, a
+            transition rule, a reward. A <b>partially observable</b> MDP adds
+            an observation space and an observation function
+            <span class="math">O : S → Ω</span>: the agent never receives the
+            state <span class="math">s</span>, only
+            <span class="math">o = O(s)</span>. Our task maps exactly onto
+            this: the full grid and agent pose are the state; the 7×7 crop,
+            the view direction, and the mission are the observation; reward is
+            terminal-only; the horizon is the
+            <span data-stat="env.max-steps"></span>-step limit. Given the reset
+            seed, the dynamics are deterministic, and all randomness sits in
+            world generation.
+          </p>
+          <div
+            data-illustration="pomdp-loop"
+            data-title="The agent–environment loop with the observation bottleneck"
+            data-spec="Agent and environment exchanging actions and observations; the true state hidden behind O(s); the mission entering as a side channel."
+          ></div>
+
+          <h2>Aliasing: the same input, two different right answers</h2>
+          <p class="prose">
+            Partial observability is not an abstract worry; it is countable.
+            Across <span data-stat="lab02.episodes"></span> expert episodes
+            (<span data-stat="lab02.states"></span> visited states), the
+            states collapse into <span data-stat="lab02.classes"></span>
+            distinct observations. <span data-stat="lab02.aliased"></span> of
+            those observation classes are <b>aliased</b>: byte-identical
+            observations arising from provably different worlds, and
+            <span data-stat="lab02.conflicting"></span> of them carry
+            <em>conflicting expert actions</em>.
+          </p>
+          <figure class="exhibit">
+            <video data-media="aliasing_pair" width="1292" height="780"></video>
+            <figcaption>
+              Two different mazes converge to the same bytes.
+              <span data-media-caption></span>
+            </figcaption>
+          </figure>
+          <figure class="exhibit">
+            <img
+              src="../../figures/lab02/aliasing_showcase.svg"
+              alt="Two maze renderings flanking one shared observation; the expert recommends left in one world and forward in the other."
+              width="770" height="283" loading="lazy"
+            />
+            <figcaption>
+              The frozen moment: identical observation, different optimal
+              actions. This is the earliest such pair in rollout order.
+            </figcaption>
+          </figure>
+
+          <div class="callout">
+            <h3>The consequence</h3>
+            <p>
+              Any <b>memoryless</b> policy, meaning any function from single
+              observations to actions, must disagree with the expert on at
+              least <b data-stat="lab02.floor"></b> of visited states on this
+              distribution, no matter how it is trained. Memory is not an
+              architectural taste; it is required for optimality. This number
+              returns twice: when the first cloned policies are compared
+              (<a href="../04-learning/">04</a>) and when recurrence is ablated
+              (<a href="../05-architecture/">05</a>).
+            </p>
+          </div>
+
+          <h2>The alternatives, and why we refuse them</h2>
+          <p class="prose">
+            MiniGrid can simply hand the policy the entire grid, dissolving
+            the problem into an MDP, but no physical agent observes the world
+            state, and this study is about acting under realistic perception.
+            Frame stacking buys a fixed window of memory; belief states are
+            exact but require a known world model. The study's choice,
+            <em>learned</em> memory in a recurrent network, is built in
+            <a href="../05-architecture/">chapter 05</a>.
+          </p>
+          <figure class="exhibit">
+            <img
+              src="../../figures/lab02/full_observability_contrast.svg"
+              alt="The world, the 7×7 partial view, and the rejected fully observable alternative side by side."
+              width="813" height="283" loading="lazy"
+            />
+            <figcaption>
+              With full observability, recovery would be a lookup instead of
+              a skill.
+            </figcaption>
+          </figure>
+
+          <div class="callout callout--recap">
+            <h3>Summary</h3>
+            <p>
+              The task is a POMDP by construction and by measurement: real
+              aliased states with conflicting correct actions exist, so any
+              policy worth training will need memory, and a teacher who can
+              see more than the student.
+            </p>
+          </div>
+
+          <nav class="journey-nav" aria-label="chapters">
+            <a href="../01-world/"><span class="dir">‹ Back</span>The world</a>
+            <a href="../03-oracle/" style="text-align: right"
+              ><span class="dir">Next ›</span>The teacher</a
+            >
+          </nav>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <a href="https://github.com/rnle/recovery-policy-learning"
+          ><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>Source on GitHub</a
+        >
+        <span>Last updated %VITE_BUILD_DATE%</span>
+        <a href="../../reports/Recovery_Policy_Learning_Technical_Report.pdf"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.75 1.75h5.5l3 3v9.5h-8.5z"></path><path d="M9.25 1.75v3h3"></path></svg>Technical report</a>
+      </div>
+    </footer>
+  </body>
+</html>

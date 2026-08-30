@@ -1,0 +1,290 @@
+/* Reset, document rhythm, and the shared page chrome. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--size-2);
+  line-height: 1.65;
+}
+
+img,
+video,
+svg,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--ink-strong);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--space-3);
+}
+
+h1 {
+  font-size: var(--size-5);
+}
+
+h2 {
+  font-size: var(--size-4);
+  margin-top: var(--space-6);
+}
+
+h3 {
+  font-size: var(--size-3);
+  margin-top: var(--space-4);
+}
+
+p,
+ul,
+ol {
+  margin: 0 0 var(--space-3);
+}
+
+a {
+  color: var(--link);
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-color: var(--link);
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--paper-sunken);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+pre {
+  background: #37424b;
+  color: #edf1f4;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  font-size: var(--size-1);
+  line-height: 1.55;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: var(--size-1);
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  font-weight: 600;
+  color: var(--ink-soft);
+  border-bottom-color: var(--line-strong);
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+:focus-visible {
+  outline: 2px solid var(--extra);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--ink);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  left: var(--space-3);
+}
+
+/* layout ------------------------------------------------------------------ */
+
+.wrap {
+  max-width: var(--grid-max);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.prose {
+  max-width: var(--measure);
+}
+
+main {
+  padding-bottom: var(--space-6);
+}
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+}
+
+.brand {
+  color: var(--ink-strong);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: var(--size-2);
+}
+
+.site-nav {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  font-size: var(--size-1);
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  text-decoration: none;
+  color: var(--ink-soft);
+  padding: 0.2rem 0;
+}
+
+.site-nav a[aria-current="page"],
+.site-nav a:hover {
+  color: var(--ink);
+  box-shadow: inset 0 -2px var(--recovery);
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  margin-top: var(--space-6);
+  padding: var(--space-4) 0 var(--space-5);
+  color: var(--ink-soft);
+  font-size: var(--size-0);
+}
+
+.site-footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+}
+
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--ink);
+}
+
+/* inline icons sit on the text baseline wherever they appear */
+.icon {
+  width: 1em;
+  height: 1em;
+  flex: none;
+}
+
+/* utilities --------------------------------------------------------------- */
+
+.muted {
+  color: var(--ink-soft);
+}
+
+.small {
+  font-size: var(--size-0);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.math {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-variant-numeric: lining-nums; /* Georgia's text figures sit oddly next to scripts */
+}
+
+.math .rm {
+  font-style: normal;
+}
+
+/* Scripts sized and placed by hand: the browser defaults (smaller +
+   vertical-align: super/sub) push line height around and float exponents
+   too high in a serif face. */
+.math sup,
+.math sub {
+  font-size: 0.72em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+.math sup {
+  top: -0.55em;
+}
+
+.math sub {
+  bottom: -0.2em;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: var(--size-4);
+  }
+
+  h2 {
+    font-size: var(--size-3);
+  }
+
+  .wrap {
+    padding: 0 var(--space-3);
+  }
+}

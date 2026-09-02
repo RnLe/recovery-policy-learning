@@ -1,12 +1,13 @@
 # local research notes, never published
 private_docs/
 
-# generated experiment artifacts
-data/
-runs/
-results/
-tmp/
-build/
+# generated experiment artifacts, at the repository root only: a nested
+# directory called data or build is source, not an artifact
+/data/
+/runs/
+/results/
+/tmp/
+/build/
 
 # environments and caches
 .venv/

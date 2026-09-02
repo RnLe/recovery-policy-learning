@@ -1,0 +1,85 @@
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # ffmpeg is a hard prerequisite, not a nicety: the poster-frame
+      # extraction in `grf stage-site` and the media tests both shell out to
+      # it, and the media tests are not marked slow.
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python environment
+        run: uv sync --frozen
+
+      - name: Lint
+        run: uv run ruff check src tests
+
+      - name: Fast test suite
+        run: uv run pytest -m "not slow" -q
+
+      - name: Compile the report
+        run: |
+          curl -sL -o typst.tar.xz https://github.com/typst/typst/releases/download/v0.15.1/typst-x86_64-unknown-linux-musl.tar.xz
+          tar -xf typst.tar.xz
+          mkdir -p build
+          ./typst-x86_64-unknown-linux-musl/typst compile report/main.typ build/recovery-policy-learning-report.pdf
+
+      # foundations/media is committed evidence (regenerable locally with
+      # `grf media`); staging consumes it as-is.
+      - name: Stage and verify site data
+        run: |
+          uv run grf stage-site --force
+          uv run grf verify-staging
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Build the site
+        working-directory: site
+        run: |
+          npm ci
+          npm run lint
+          npm test
+          npm run build -- --base "/${{ github.event.repository.name }}/"
+          npm run check
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

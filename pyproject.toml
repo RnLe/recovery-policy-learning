@@ -39,6 +39,7 @@ packages = ["src/grounded_recovery", "src/gr_foundations"]
 testpaths = ["tests"]
 markers = [
     "slow: full-scale runs (complete preflight, pilot training); excluded from the fast suite",
+    "gpu: needs the CUDA device the contract pins; skipped where none is present",
 ]
 
 [tool.ruff]

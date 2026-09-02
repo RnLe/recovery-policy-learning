@@ -103,6 +103,7 @@ def test_padding_invariance(model) -> None:
     assert torch.allclose(alone_hidden, padded_hidden, atol=1e-6)
 
 
+@pytest.mark.gpu
 def test_mission_padding_invariance(model) -> None:
     image, direction, prev_action, mission, mission_lengths, mask = make_inputs(1, 3)
     padded_mission = torch.cat([mission, torch.zeros((1, 4), dtype=torch.long)], 1)

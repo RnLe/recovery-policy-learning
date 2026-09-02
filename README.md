@@ -148,6 +148,7 @@ uv run gr publish-result --contract configs/experiment_contract.yaml
 uv run gr export-typst   --contract configs/experiment_contract.yaml
 typst compile report/main.typ build/recovery-policy-learning-report.pdf
 uv run pytest -m "not slow"   # fast suite; run -m slow separately
+                              # tests marked gpu skip without a CUDA device
 ```
 
 Everything is deterministic given the contract: named seeds are derived with

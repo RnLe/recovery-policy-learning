@@ -26,6 +26,8 @@ from grounded_recovery.data import (
 from grounded_recovery.integrity import GENESIS_HASH
 from grounded_recovery.train import load_all_windows, load_checkpoint, train_base
 
+pytestmark = pytest.mark.gpu
+
 TINY_N0 = 25
 OVERRIDES = {
     "data.n0": TINY_N0,

@@ -16,6 +16,8 @@ from grounded_recovery.config import contract_hash, load_and_validate
 from grounded_recovery.data import make_manifests
 from grounded_recovery.experiment import ARM_EXTRA, ARM_RECOVERY, run_pilot_bundle
 
+pytestmark = pytest.mark.gpu
+
 TINY = {
     "data.n0": 20,
     "data.b": 6,

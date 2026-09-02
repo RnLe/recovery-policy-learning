@@ -29,6 +29,7 @@ def cfg():
     return load_and_validate(REPO_ROOT / "configs" / "pilot.yaml")
 
 
+@pytest.mark.gpu
 def test_policy_capture_annotate_and_gif(cfg, tmp_path) -> None:
     entries, _ = load_split_manifest(REPO_ROOT / "manifests", "validation")
     entry = entries[0]

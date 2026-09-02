@@ -22,6 +22,24 @@ TINY_SPLIT_COUNTS = {
 }
 
 
+def pytest_collection_modifyitems(config, items):
+    """Skip the CUDA-only tests where no device exists, for example on CI.
+
+    The contract pins ``device: cuda`` for every trained artifact, so training,
+    bit-exact model comparisons and policy replays need a real device. The rest
+    of the suite (environment, oracle, manifests, statistics, integrity,
+    publishing, foundations) runs anywhere.
+    """
+    import torch
+
+    if torch.cuda.is_available():
+        return
+    skip = pytest.mark.skip(reason="needs the CUDA device pinned by the contract")
+    for item in items:
+        if "gpu" in item.keywords:
+            item.add_marker(skip)
+
+
 @pytest.fixture(scope="session")
 def tiny_config_factory(tmp_path_factory):
     """Factory writing structurally valid configs with miniature scenario counts."""
